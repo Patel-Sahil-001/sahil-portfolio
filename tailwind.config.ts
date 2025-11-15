@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        'space': ['Space Grotesk', 'sans-serif'],
+        'exo': ['Exo 2', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -48,10 +52,11 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         neon: {
-          cyan: "hsl(var(--neon-cyan))",
+          orange: "hsl(var(--neon-orange))",
+          teal: "hsl(var(--neon-teal))",
           purple: "hsl(var(--neon-purple))",
-          blue: "hsl(var(--neon-blue))",
           pink: "hsl(var(--neon-pink))",
+          green: "hsl(var(--neon-green))",
         },
       },
       borderRadius: {

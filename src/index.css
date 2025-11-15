@@ -8,71 +8,72 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Cyberpunk Dark Theme */
-    --background: 240 10% 3.9%;
-    --foreground: 180 100% 90%;
+    /* Modern Orange & Teal Theme */
+    --background: 220 25% 5%;
+    --foreground: 180 100% 95%;
 
-    --card: 240 10% 7%;
-    --card-foreground: 180 100% 90%;
+    --card: 220 20% 8%;
+    --card-foreground: 180 100% 95%;
 
-    --popover: 240 10% 7%;
-    --popover-foreground: 180 100% 90%;
+    --popover: 220 20% 8%;
+    --popover-foreground: 180 100% 95%;
 
-    /* Neon Cyan Primary */
-    --primary: 180 100% 50%;
-    --primary-foreground: 240 10% 3.9%;
+    /* Vibrant Orange Primary */
+    --primary: 18 100% 60%;
+    --primary-foreground: 220 25% 5%;
 
-    /* Purple Secondary */
-    --secondary: 270 100% 60%;
-    --secondary-foreground: 240 10% 3.9%;
+    /* Electric Teal Secondary */
+    --secondary: 180 100% 50%;
+    --secondary-foreground: 220 25% 5%;
 
-    --muted: 240 10% 15%;
-    --muted-foreground: 180 20% 60%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 180 30% 70%;
 
-    /* Neon Accent */
-    --accent: 280 100% 65%;
-    --accent-foreground: 240 10% 3.9%;
+    /* Purple Accent */
+    --accent: 270 80% 65%;
+    --accent-foreground: 220 25% 5%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 240 10% 15%;
-    --input: 240 10% 15%;
-    --ring: 180 100% 50%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 18 100% 60%;
 
     --radius: 1rem;
 
-    /* Custom Neon Glow Colors */
-    --neon-cyan: 180 100% 50%;
-    --neon-purple: 270 100% 60%;
-    --neon-blue: 220 100% 55%;
+    /* Custom Vibrant Colors */
+    --neon-orange: 18 100% 60%;
+    --neon-teal: 180 100% 50%;
+    --neon-purple: 270 80% 65%;
     --neon-pink: 320 100% 60%;
+    --neon-green: 140 100% 50%;
 
     /* Glassmorphism */
-    --glass-bg: 240 10% 10%;
+    --glass-bg: 220 20% 10%;
     --glass-border: 180 50% 40%;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 180 100% 90%;
-    --card: 240 10% 7%;
-    --card-foreground: 180 100% 90%;
-    --popover: 240 10% 7%;
-    --popover-foreground: 180 100% 90%;
-    --primary: 180 100% 50%;
-    --primary-foreground: 240 10% 3.9%;
-    --secondary: 270 100% 60%;
-    --secondary-foreground: 240 10% 3.9%;
-    --muted: 240 10% 15%;
-    --muted-foreground: 180 20% 60%;
-    --accent: 280 100% 65%;
-    --accent-foreground: 240 10% 3.9%;
+    --background: 220 25% 5%;
+    --foreground: 180 100% 95%;
+    --card: 220 20% 8%;
+    --card-foreground: 180 100% 95%;
+    --popover: 220 20% 8%;
+    --popover-foreground: 180 100% 95%;
+    --primary: 18 100% 60%;
+    --primary-foreground: 220 25% 5%;
+    --secondary: 180 100% 50%;
+    --secondary-foreground: 220 25% 5%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 180 30% 70%;
+    --accent: 270 80% 65%;
+    --accent-foreground: 220 25% 5%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 240 10% 15%;
-    --input: 240 10% 15%;
-    --ring: 180 100% 50%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 18 100% 60%;
   }
 }
 
@@ -114,9 +115,14 @@ All colors MUST be HSL.
   }
 
   /* Neon glow effects */
-  .glow-cyan {
-    box-shadow: 0 0 20px hsl(var(--neon-cyan) / 0.5),
-                0 0 40px hsl(var(--neon-cyan) / 0.3);
+  .glow-orange {
+    box-shadow: 0 0 20px hsl(var(--neon-orange) / 0.5),
+                0 0 40px hsl(var(--neon-orange) / 0.3);
+  }
+
+  .glow-teal {
+    box-shadow: 0 0 20px hsl(var(--neon-teal) / 0.5),
+                0 0 40px hsl(var(--neon-teal) / 0.3);
   }
 
   .glow-purple {
@@ -124,14 +130,14 @@ All colors MUST be HSL.
                 0 0 40px hsl(var(--neon-purple) / 0.3);
   }
 
-  .glow-text-cyan {
-    text-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.8),
-                 0 0 20px hsl(var(--neon-cyan) / 0.5),
-                 0 0 30px hsl(var(--neon-cyan) / 0.3);
+  .glow-text-orange {
+    text-shadow: 0 0 10px hsl(var(--neon-orange) / 0.8),
+                 0 0 20px hsl(var(--neon-orange) / 0.5),
+                 0 0 30px hsl(var(--neon-orange) / 0.3);
   }
 
-  .glow-text-purple {
-    text-shadow: 0 0 10px hsl(var(--neon-purple) / 0.8),
-                 0 0 20px hsl(var(--neon-purple) / 0.5);
+  .glow-text-teal {
+    text-shadow: 0 0 10px hsl(var(--neon-teal) / 0.8),
+                 0 0 20px hsl(var(--neon-teal) / 0.5);
   }
 }
