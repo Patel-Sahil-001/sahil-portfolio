@@ -23,7 +23,7 @@ export default function AboutSection() {
   return (
     <section id="about" className="py-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-purple-950/10 to-background" />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -32,13 +32,13 @@ export default function AboutSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 glow-text-teal font-exo">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 glow-text-teal font-exo">
             About Me
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-neon-orange to-neon-teal mx-auto rounded-full" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -47,20 +47,20 @@ export default function AboutSection() {
             className="space-y-6"
           >
             <div className="glass rounded-2xl p-8 glow-orange">
-              <p className="text-lg leading-relaxed text-foreground/90 mb-4 font-space">
+              <p className="text-base sm:text-lg leading-relaxed text-foreground/90 mb-4 font-space">
                 I'm a <span className="text-primary font-semibold">B.Tech Computer Science and Engineering</span> student
-                at Parul University (2024-2027), with a strong foundation from my 
-                <span className="text-secondary font-semibold"> Diploma in Computer Engineering</span> from 
+                at Parul University (2024-2027), with a strong foundation from my
+                <span className="text-secondary font-semibold"> Diploma in Computer Engineering</span> from
                 Bhagwan Mahavir University.
               </p>
-              <p className="text-lg leading-relaxed text-foreground/90 mb-4 font-space">
-                My journey in tech is driven by a unique blend of <span className="text-neon-orange">problem-solving prowess</span> and 
+              <p className="text-base sm:text-lg leading-relaxed text-foreground/90 mb-4 font-space">
+                My journey in tech is driven by a unique blend of <span className="text-neon-orange">problem-solving prowess</span> and
                 <span className="text-neon-teal"> creative design thinking</span>. I specialize in Java and Python development,
                 with a keen interest in Data Structures & Algorithms.
               </p>
-              <p className="text-lg leading-relaxed text-foreground/90 font-space">
-                What sets me apart is my passion for <span className="text-accent font-semibold">UI/UX design</span> — 
-                I believe great code deserves an equally great interface. I'm constantly exploring the intersection 
+              <p className="text-base sm:text-lg leading-relaxed text-foreground/90 font-space">
+                What sets me apart is my passion for <span className="text-accent font-semibold">UI/UX design</span> —
+                I believe great code deserves an equally great interface. I'm constantly exploring the intersection
                 of functionality and aesthetics to create solutions that are both powerful and beautiful.
               </p>
             </div>

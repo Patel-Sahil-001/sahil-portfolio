@@ -8,72 +8,72 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Modern Orange & Teal Theme */
-    --background: 220 25% 5%;
-    --foreground: 180 100% 95%;
+    /* Custom Color Palette Theme */
+    --background: 201 75% 9%;
+    --foreground: 0 0% 95%;
 
-    --card: 220 20% 8%;
-    --card-foreground: 180 100% 95%;
+    --card: 203 58% 27%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 220 20% 8%;
-    --popover-foreground: 180 100% 95%;
+    --popover: 203 58% 27%;
+    --popover-foreground: 0 0% 95%;
 
-    /* Vibrant Orange Primary */
-    --primary: 18 100% 60%;
-    --primary-foreground: 220 25% 5%;
+    /* Teal Primary */
+    --primary: 183 23% 48%;
+    --primary-foreground: 201 75% 9%;
 
-    /* Electric Teal Secondary */
-    --secondary: 180 100% 50%;
-    --secondary-foreground: 220 25% 5%;
+    /* Teal Secondary */
+    --secondary: 183 23% 48%;
+    --secondary-foreground: 201 75% 9%;
 
-    --muted: 220 20% 15%;
-    --muted-foreground: 180 30% 70%;
+    --muted: 203 58% 27%;
+    --muted-foreground: 0 0% 95%;
 
-    /* Purple Accent */
-    --accent: 270 80% 65%;
-    --accent-foreground: 220 25% 5%;
+    /* Teal Accent */
+    --accent: 183 23% 48%;
+    --accent-foreground: 201 75% 9%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 20% 18%;
-    --input: 220 20% 18%;
-    --ring: 18 100% 60%;
+    --border: 203 58% 27%;
+    --input: 203 58% 27%;
+    --ring: 183 23% 48%;
 
     --radius: 1rem;
 
     /* Custom Vibrant Colors */
-    --neon-orange: 18 100% 60%;
-    --neon-teal: 180 100% 50%;
-    --neon-purple: 270 80% 65%;
-    --neon-pink: 320 100% 60%;
-    --neon-green: 140 100% 50%;
+    --neon-orange: 183 23% 48%;
+    --neon-teal: 183 23% 48%;
+    --neon-purple: 203 58% 27%;
+    --neon-pink: 0 0% 95%;
+    --neon-green: 183 23% 48%;
 
     /* Glassmorphism */
-    --glass-bg: 220 20% 10%;
-    --glass-border: 180 50% 40%;
+    --glass-bg: 201 75% 9%;
+    --glass-border: 183 23% 48%;
   }
 
   .dark {
-    --background: 220 25% 5%;
-    --foreground: 180 100% 95%;
-    --card: 220 20% 8%;
-    --card-foreground: 180 100% 95%;
-    --popover: 220 20% 8%;
-    --popover-foreground: 180 100% 95%;
-    --primary: 18 100% 60%;
-    --primary-foreground: 220 25% 5%;
-    --secondary: 180 100% 50%;
-    --secondary-foreground: 220 25% 5%;
-    --muted: 220 20% 15%;
-    --muted-foreground: 180 30% 70%;
-    --accent: 270 80% 65%;
-    --accent-foreground: 220 25% 5%;
+    --background: 201 75% 9%;
+    --foreground: 0 0% 95%;
+    --card: 203 58% 27%;
+    --card-foreground: 0 0% 95%;
+    --popover: 203 58% 27%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 183 23% 48%;
+    --primary-foreground: 201 75% 9%;
+    --secondary: 183 23% 48%;
+    --secondary-foreground: 201 75% 9%;
+    --muted: 203 58% 27%;
+    --muted-foreground: 0 0% 95%;
+    --accent: 183 23% 48%;
+    --accent-foreground: 201 75% 9%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 220 20% 18%;
-    --input: 220 20% 18%;
-    --ring: 18 100% 60%;
+    --border: 215 13% 27%;
+    --input: 215 13% 27%;
+    --ring: 183 100% 36%;
   }
 }
 
@@ -116,8 +116,8 @@ All colors MUST be HSL.
 
   /* Neon glow effects */
   .glow-orange {
-    box-shadow: 0 0 20px hsl(var(--neon-orange) / 0.5),
-                0 0 40px hsl(var(--neon-orange) / 0.3);
+    box-shadow: 0 0 20px hsl(var(--neon-teal) / 0.5),
+                0 0 40px hsl(var(--neon-teal) / 0.3);
   }
 
   .glow-teal {
@@ -131,9 +131,9 @@ All colors MUST be HSL.
   }
 
   .glow-text-orange {
-    text-shadow: 0 0 10px hsl(var(--neon-orange) / 0.8),
-                 0 0 20px hsl(var(--neon-orange) / 0.5),
-                 0 0 30px hsl(var(--neon-orange) / 0.3);
+    text-shadow: 0 0 10px hsl(var(--neon-teal) / 0.8),
+                 0 0 20px hsl(var(--neon-teal) / 0.5),
+                 0 0 30px hsl(var(--neon-teal) / 0.3);
   }
 
   .glow-text-teal {
