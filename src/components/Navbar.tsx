@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { Button } from './ui/button';
+import ThemeToggle from './ThemeToggle';
 
 const navLinks = [
   { label: 'Home', href: '#hero', id: 'hero' },
@@ -94,8 +95,8 @@ export default function Navbar() {
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
                 className={`px-4 py-2 rounded-lg transition-all duration-300 text-sm font-medium ${activeSection === link.id
-                    ? 'bg-primary/20 text-primary border border-primary/50 glow-orange'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-primary/10'
+                  ? 'bg-primary/20 text-primary border border-primary/50 glow-orange'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-primary/10'
                   }`}
               >
                 {link.label}
@@ -103,20 +104,15 @@ export default function Navbar() {
             ))}
           </motion.div>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors"
+          {/* Theme Toggle - Desktop */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="hidden md:block"
           >
-            {isOpen ? (
-              <X className="h-6 w-6 text-primary" />
-            ) : (
-              <Menu className="h-6 w-6 text-foreground" />
-            )}
-          </motion.button>
+            <ThemeToggle />
+          </motion.div>
 
           {/* Contact Button - Desktop */}
           <motion.div
@@ -133,6 +129,24 @@ export default function Navbar() {
               Get in Touch
             </Button>
           </motion.div>
+
+          {/* Mobile Controls - Theme Toggle and Menu Button */}
+          <div className="flex md:hidden items-center gap-2">
+            <ThemeToggle />
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
+            >
+              {isOpen ? (
+                <X className="h-6 w-6 text-primary" />
+              ) : (
+                <Menu className="h-6 w-6 text-foreground" />
+              )}
+            </motion.button>
+          </div>
         </div>
 
         {/* Mobile Navigation Menu */}
@@ -154,8 +168,8 @@ export default function Navbar() {
                     exit={{ opacity: 0, x: -20 }}
                     onClick={() => handleNavClick(link.id)}
                     className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 font-medium ${activeSection === link.id
-                        ? 'bg-primary/20 text-primary border border-primary/50 glow-orange'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-primary/10'
+                      ? 'bg-primary/20 text-primary border border-primary/50 glow-orange'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-primary/10'
                       }`}
                   >
                     {link.label}
