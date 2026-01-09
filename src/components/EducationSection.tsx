@@ -47,7 +47,7 @@ export default function EducationSection() {
   return (
     <section id="education" className="py-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-purple-950/10 to-background" />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -67,7 +67,7 @@ export default function EducationSection() {
           <div className="relative">
             {/* Vertical line */}
             <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-neon-cyan via-neon-purple to-neon-blue" />
-            
+
             {educationData.map((edu, index) => (
               <motion.div
                 key={edu.degree}
@@ -79,7 +79,7 @@ export default function EducationSection() {
               >
                 {/* Timeline dot */}
                 <div className="absolute left-8 md:left-auto md:right-[-8px] top-6 w-4 h-4 rounded-full bg-primary glow-cyan" />
-                
+
                 <div className="glass rounded-xl p-6 hover:glow-purple transition-all duration-300">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="p-3 rounded-lg bg-primary/10">
@@ -91,12 +91,12 @@ export default function EducationSection() {
                       <p className="text-sm text-muted-foreground">{edu.location}</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center gap-2 mb-3">
-                    <Calendar className="h-4 w-4 text-secondary" />
-                    <span className="text-sm text-secondary font-medium">{edu.period}</span>
+                    <Calendar className="h-4 w-4 text-primary" />
+                    <span className="text-sm text-primary font-semibold">{edu.period}</span>
                   </div>
-                  
+
                   <p className="text-muted-foreground">{edu.description}</p>
                 </div>
               </motion.div>
@@ -114,7 +114,7 @@ export default function EducationSection() {
           <h3 className="text-3xl font-bold text-center mb-8 text-foreground" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
             Professional Certifications
           </h3>
-          
+
           <div className="grid md:grid-cols-2 gap-6">
             {certifications.map((cert, index) => (
               <motion.div

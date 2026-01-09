@@ -92,7 +92,7 @@ export default function CertificatesSection() {
                       {cert.title}
                     </h3>
                     <p className="text-sm text-primary font-semibold">{cert.issuer}</p>
-                    <p className="text-xs text-muted-foreground mt-1">{cert.date}</p>
+                    <p className="text-sm text-foreground/80 mt-1 font-medium">{cert.date}</p>
                   </div>
                 </div>
 
