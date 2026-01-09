@@ -50,7 +50,7 @@ export default function AboutSection() {
               <p className="text-base sm:text-lg leading-relaxed text-foreground/90 mb-4 font-space">
                 I'm a <span className="text-primary font-semibold">B.Tech Computer Science and Engineering</span> student
                 at Parul University (2024-2027), with a strong foundation from my
-                <span className="text-secondary font-semibold"> Diploma in Computer Engineering</span> from
+                <span className="text-primary font-semibold"> Diploma in Computer Engineering</span> from
                 Bhagwan Mahavir University.
               </p>
               <p className="text-base sm:text-lg leading-relaxed text-foreground/90 mb-4 font-space">
