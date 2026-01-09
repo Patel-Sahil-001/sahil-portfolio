@@ -9,7 +9,7 @@ export default function ProfileImage() {
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative z-20 w-64 h-80 sm:w-80 sm:h-96 md:w-96 md:h-[28rem] lg:w-[40rem] lg:h-[32rem]"
+        className="relative z-20 w-64 h-80 sm:w-80 sm:h-96 md:w-[28rem] md:h-96 lg:w-[32rem] lg:h-[40rem]"
       >
         {/* Profile Image */}
         <img

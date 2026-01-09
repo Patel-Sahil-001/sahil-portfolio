@@ -31,7 +31,7 @@ export default function CertificatesSection() {
   return (
     <section id="certificates" className="py-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-cyan-950/20 to-background" />
-      
+
       {/* Animated particles */}
       <div className="absolute inset-0 opacity-20">
         {[...Array(20)].map((_, i) => (
@@ -91,7 +91,7 @@ export default function CertificatesSection() {
                     <h3 className="text-xl font-bold text-foreground" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
                       {cert.title}
                     </h3>
-                    <p className="text-sm text-secondary font-semibold">{cert.issuer}</p>
+                    <p className="text-sm text-primary font-semibold">{cert.issuer}</p>
                     <p className="text-xs text-muted-foreground mt-1">{cert.date}</p>
                   </div>
                 </div>

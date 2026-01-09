@@ -85,7 +85,7 @@ export default function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-secondary/50 text-secondary hover:bg-secondary/10 font-space"
+                className="border-neon-teal border-2 text-neon-teal hover:bg-neon-teal/10 hover:glow-teal font-space font-semibold"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <Mail className="mr-2 h-5 w-5" />
@@ -113,7 +113,7 @@ export default function HeroSection() {
                 rel="noopener noreferrer"
                 className="p-3 rounded-full glass hover:glow-teal transition-all duration-300"
               >
-                <Github className="h-6 w-6 text-secondary" />
+                <Github className="h-6 w-6 text-neon-teal" />
               </a>
             </motion.div>
           </motion.div>
