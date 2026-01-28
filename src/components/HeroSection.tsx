@@ -123,7 +123,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="h-80 sm:h-96 md:h-[500px] lg:h-[600px] relative"
+            className="h-80 sm:h-96 md:h-[500px] lg:h-[600px] relative will-change-transform"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-neon-orange/20 to-neon-teal/20 rounded-full blur-3xl" />
             <ProfileImage />
@@ -136,7 +136,7 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-2 md:bottom-10 left-1/2 -translate-x-1/2"
+        className="absolute bottom-2 md:bottom-10 left-1/2 -translate-x-1/2 will-change-transform"
       >
         <div className="flex flex-col items-center gap-2 cursor-pointer" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
           <span className="text-sm text-muted-foreground font-space">Scroll to explore</span>

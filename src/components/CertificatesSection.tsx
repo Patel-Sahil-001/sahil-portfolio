@@ -27,29 +27,40 @@ const certificates = [
 
 ];
 
+import { useMemo } from 'react';
+
 export default function CertificatesSection() {
+  const particles = useMemo(() => {
+    return [...Array(20)].map(() => ({
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      duration: 3 + Math.random() * 2,
+      delay: Math.random() * 2,
+    }));
+  }, []);
+
   return (
     <section id="certificates" className="py-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-cyan-950/20 to-background" />
 
       {/* Animated particles */}
       <div className="absolute inset-0 opacity-20">
-        {[...Array(20)].map((_, i) => (
+        {particles.map((particle, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-primary rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${particle.left}%`,
+              top: `${particle.top}%`,
             }}
             animate={{
               y: [0, -30, 0],
               opacity: [0.2, 1, 0.2],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: particle.duration,
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: particle.delay,
             }}
           />
         ))}
