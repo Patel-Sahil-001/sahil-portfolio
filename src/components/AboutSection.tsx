@@ -22,7 +22,7 @@ const features = [
 export default function AboutSection() {
   return (
     <section id="about" className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-purple-950/10 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-white/5 to-background" />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -32,10 +32,10 @@ export default function AboutSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 glow-text-teal font-exo">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 glow-text-white font-exo">
             About Me
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-neon-orange to-neon-teal mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-white/20 mx-auto rounded-full" />
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -46,20 +46,20 @@ export default function AboutSection() {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <div className="glass rounded-2xl p-8 glow-orange">
+            <div className="glass rounded-2xl p-8 glow-white">
               <p className="text-base sm:text-lg leading-relaxed text-foreground/90 mb-4 font-space">
-                I'm a <span className="text-primary font-semibold">B.Tech Computer Science and Engineering</span> student
+                I'm a <span className="text-foreground font-semibold">B.Tech Computer Science and Engineering</span> student
                 at Parul University (2024-2027), with a strong foundation from my
-                <span className="text-primary font-semibold"> Diploma in Computer Engineering</span> from
+                <span className="text-foreground font-semibold"> Diploma in Computer Engineering</span> from
                 Bhagwan Mahavir University.
               </p>
               <p className="text-base sm:text-lg leading-relaxed text-foreground/90 mb-4 font-space">
-                My journey in tech is driven by a unique blend of <span className="text-neon-orange">problem-solving prowess</span> and
-                <span className="text-neon-teal"> creative design thinking</span>. I specialize in Java and Python development,
+                My journey in tech is driven by a unique blend of <span className="text-foreground font-semibold">problem-solving prowess</span> and
+                <span className="text-foreground font-semibold"> creative design thinking</span>. I specialize in Java and Python development,
                 with a keen interest in Data Structures & Algorithms.
               </p>
               <p className="text-base sm:text-lg leading-relaxed text-foreground/90 font-space">
-                What sets me apart is my passion for <span className="text-accent font-semibold">UI/UX design</span> —
+                What sets me apart is my passion for <span className="text-foreground font-semibold">UI/UX design</span> —
                 I believe great code deserves an equally great interface. I'm constantly exploring the intersection
                 of functionality and aesthetics to create solutions that are both powerful and beautiful.
               </p>
@@ -80,11 +80,11 @@ export default function AboutSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="glass rounded-xl p-6 hover:glow-teal transition-all duration-300 group"
+                className="glass rounded-xl p-6 hover:glow-white transition-all duration-300 group"
               >
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <feature.icon className="h-6 w-6 text-primary" />
+                  <div className="p-3 rounded-lg bg-white/10 group-hover:bg-white/20 transition-colors">
+                    <feature.icon className="h-6 w-6 text-foreground" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-foreground font-exo">{feature.title}</h3>

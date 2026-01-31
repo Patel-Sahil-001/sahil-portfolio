@@ -20,7 +20,7 @@ function FloatingIcon({ position, icon, color, onClick }: FloatingIconProps) {
       const time = state.clock.getElapsedTime();
       meshRef.current.position.y = position[1] + Math.sin(time + position[0]) * 0.3;
       meshRef.current.rotation.y = time * 0.5;
-      
+
       // Scale on hover
       const targetScale = hovered ? 1.3 : 1;
       meshRef.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.1);
@@ -36,9 +36,9 @@ function FloatingIcon({ position, icon, color, onClick }: FloatingIconProps) {
         onPointerOut={() => setHovered(false)}
       >
         <boxGeometry args={[0.4, 0.4, 0.4]} />
-        <meshStandardMaterial 
-          color={color} 
-          emissive={color} 
+        <meshStandardMaterial
+          color={color}
+          emissive={color}
           emissiveIntensity={hovered ? 0.8 : 0.5}
           metalness={0.8}
           roughness={0.2}
@@ -105,21 +105,21 @@ export default function Hero3D({ onTechClick }: Hero3DProps) {
         <pointLight position={[10, 10, 10]} intensity={1.5} color="#ff6b35" />
         <pointLight position={[-10, -10, -10]} intensity={1} color="#00d9ff" />
         <spotLight position={[0, 5, 5]} angle={0.3} intensity={1.5} color="#ff6b35" />
-        
+
         <AnimatedSphere />
-        
+
         {techIcons.map((tech, idx) => (
-          <FloatingIcon 
-            key={idx} 
-            position={tech.position} 
+          <FloatingIcon
+            key={idx}
+            position={tech.position}
             icon={tech.icon}
             color={tech.color}
             onClick={() => onTechClick(idx)}
           />
         ))}
-        
-        <OrbitControls 
-          enableZoom={false} 
+
+        <OrbitControls
+          enableZoom={false}
           enablePan={false}
           autoRotate
           autoRotateSpeed={0.8}

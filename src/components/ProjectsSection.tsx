@@ -33,14 +33,14 @@ export default function ProjectsSection() {
 
   return (
     <section id="projects" className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-purple-950/20 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-white/5 to-background" />
 
       {/* Animated particles */}
       <div className="absolute inset-0 opacity-20">
         {particles.map((particle, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-secondary rounded-full"
+            className="absolute w-1 h-1 bg-white rounded-full"
             style={{
               left: `${particle.left}%`,
               top: `${particle.top}%`,
@@ -66,10 +66,10 @@ export default function ProjectsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 glow-text-purple" style={{ fontFamily: 'Orbitron, sans-serif' }}>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 glow-text-white" style={{ fontFamily: 'Orbitron, sans-serif' }}>
             Featured Projects
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-neon-purple to-neon-cyan mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-white/20 mx-auto rounded-full" />
           <p className="text-muted-foreground mt-4 text-base sm:text-lg">
             Showcasing my best work and creative solutions
           </p>
@@ -81,9 +81,10 @@ export default function ProjectsSection() {
               key={project.title}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.05 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="glass rounded-2xl overflow-hidden group hover:glow-purple transition-all duration-300 border border-primary/20 hover:border-primary/50"
+              className="glass rounded-2xl overflow-hidden group hover:glow-white transition-all duration-300 border border-white/20 hover:border-white/50"
             >
               <div className="grid md:grid-cols-2 gap-6 p-8">
                 {/* Project Image */}
@@ -94,10 +95,10 @@ export default function ProjectsSection() {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </motion.div>
 
                 {/* Project Details */}
@@ -127,14 +128,14 @@ export default function ProjectsSection() {
 
                     {/* Technologies */}
                     <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-secondary uppercase tracking-widest mb-3">
+                      <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-3">
                         Technologies
                       </h4>
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="px-3 py-1 rounded-full text-xs font-semibold bg-primary/20 text-primary border border-primary/50"
+                            className="px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-primary border border-white/20"
                           >
                             {tech}
                           </span>
@@ -147,7 +148,7 @@ export default function ProjectsSection() {
                   <div className="flex gap-3">
                     <Button
                       onClick={() => window.open(project.liveLink)}
-                      className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+                      className="flex-1 bg-primary hover:bg-white/90 text-primary-foreground font-semibold border border-transparent hover:border-white/20"
                     >
                       <ExternalLink className="mr-2 h-4 w-4" />
                       View Live
@@ -155,7 +156,7 @@ export default function ProjectsSection() {
                     <Button
                       onClick={() => window.open(project.githubLink)}
                       variant="outline"
-                      className="flex-1 border-primary/50 text-foreground hover:bg-primary/10"
+                      className="flex-1 border-white/50 text-foreground hover:bg-white/10"
                     >
                       <Github className="mr-2 h-4 w-4" />
                       Code
@@ -175,7 +176,7 @@ export default function ProjectsSection() {
           transition={{ delay: 0.3 }}
           className="text-center mt-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-3 rounded-lg bg-primary/10 border border-primary/30">
+          <div className="inline-flex items-center gap-2 px-4 py-3 rounded-lg bg-white/10 border border-white/30">
             <Code2 className="h-5 w-5 text-primary" />
             <p className="text-foreground font-medium">More projects coming soon...</p>
           </div>

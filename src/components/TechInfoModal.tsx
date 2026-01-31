@@ -31,17 +31,17 @@ export default function TechInfoModal({ tech, onClose }: TechInfoModalProps) {
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.9, opacity: 0, y: 20 }}
           onClick={(e) => e.stopPropagation()}
-          className="glass rounded-2xl p-8 max-w-md w-full glow-orange relative"
+          className="glass rounded-2xl p-8 max-w-md w-full glow-white relative"
         >
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full glass hover:glow-teal transition-all"
+            className="absolute top-4 right-4 p-2 rounded-full glass hover:glow-white transition-all"
           >
             <X className="h-5 w-5" />
           </button>
 
           <div className="text-center mb-6">
-            <div className={`text-6xl mb-4 ${tech.color === 'orange' ? 'glow-text-orange' : 'glow-text-teal'}`}>
+            <div className={`text-6xl mb-4 glow-text-white`}>
               {tech.icon}
             </div>
             <h3 className="text-3xl font-bold mb-2" style={{ fontFamily: 'Exo 2, sans-serif' }}>
@@ -63,14 +63,10 @@ export default function TechInfoModal({ tech, onClose }: TechInfoModalProps) {
                     initial={{ width: 0 }}
                     animate={{ width: tech.proficiency }}
                     transition={{ delay: 0.3, duration: 1 }}
-                    className={`h-full ${
-                      tech.color === 'orange' 
-                        ? 'bg-gradient-to-r from-neon-orange to-neon-pink' 
-                        : 'bg-gradient-to-r from-neon-teal to-neon-purple'
-                    } rounded-full`}
+                    className="h-full bg-white rounded-full bg-gradient-to-r from-gray-400 to-white"
                   />
                 </div>
-                <span className="text-sm font-semibold text-primary">{tech.proficiency}</span>
+                <span className="text-sm font-semibold text-foreground">{tech.proficiency}</span>
               </div>
             </div>
 

@@ -51,13 +51,6 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        neon: {
-          orange: "hsl(var(--neon-orange))",
-          teal: "hsl(var(--neon-teal))",
-          purple: "hsl(var(--neon-purple))",
-          pink: "hsl(var(--neon-pink))",
-          green: "hsl(var(--neon-green))",
-        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -66,20 +59,12 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
@@ -97,6 +82,10 @@ export default {
           from: { opacity: "0", transform: "translateY(20px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-100%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -105,6 +94,7 @@ export default {
         pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "spin-slow": "spin-slow 20s linear infinite",
         fadeIn: "fadeIn 0.6s ease-out",
+        marquee: "marquee 25s linear infinite",
       },
     },
   },

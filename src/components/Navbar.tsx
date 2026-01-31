@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { Button } from './ui/button';
-import ThemeToggle from './ThemeToggle';
+import { cn } from '@/lib/utils';
 
 const navLinks = [
   { label: 'Home', href: '#hero', id: 'hero' },
@@ -17,29 +17,36 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const [scrolled, setScrolled] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
+
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Scroll detection using Intersection Observer
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: '-20% 0px -60% 0px', // Trigger when section is in the upper portion of viewport
+      rootMargin: '-50% 0px -50% 0px', // More precise triggering
       threshold: 0,
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
-        // Update active section when it becomes visible
         if (entry.isIntersecting) {
-          const sectionId = entry.target.id;
-          setActiveSection(sectionId);
+          setActiveSection(entry.target.id);
         }
       });
     };
 
     observerRef.current = new IntersectionObserver(observerCallback, observerOptions);
 
-    // Observe all sections
     navLinks.forEach((link) => {
       const element = document.getElementById(link.id);
       if (element && observerRef.current) {
@@ -47,7 +54,6 @@ export default function Navbar() {
       }
     });
 
-    // Cleanup
     return () => {
       if (observerRef.current) {
         observerRef.current.disconnect();
@@ -55,96 +61,83 @@ export default function Navbar() {
     };
   }, []);
 
-  const handleNavClick = (id: string) => {
+  const handleNavClick = (id: string, e: React.MouseEvent) => {
+    e.preventDefault();
     setActiveSection(id);
     setIsOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const yOffset = -80;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
 
   return (
-    <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-background/80 border-b border-primary/20">
+    <nav
+      className={cn(
+        "fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent",
+        scrolled ? "bg-background/80 backdrop-blur-md border-white/10 shadow-lg" : "bg-transparent"
+      )}
+    >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo/Brand */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-2"
-          >
-            <span
-              className="text-xl font-bold text-foreground glow-text-orange"
-              style={{ fontFamily: 'Rajdhani, sans-serif' }}
-            >
-              Sahil Patel
-            </span>
-          </motion.div>
+        <div className="flex items-center justify-between h-20">
+          {/* Logo/Brand Removed as per request */}
+          <div />
 
           {/* Desktop Navigation */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="hidden md:flex items-center gap-1"
+            className="hidden lg:flex items-center gap-1"
           >
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => handleNavClick(link.id)}
-                className={`px-4 py-2 rounded-lg transition-all duration-300 text-sm font-medium ${activeSection === link.id
-                  ? 'bg-primary/20 text-primary border border-primary/50 glow-orange'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-primary/10'
-                  }`}
-              >
-                {link.label}
-              </button>
-            ))}
+            <div className="flex items-center p-1 rounded-full bg-background/20 backdrop-blur-sm border border-white/5">
+              {navLinks.map((link) => (
+                <a
+                  key={link.id}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(link.id, e)}
+                  className={cn(
+                    "relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
+                    activeSection === link.id
+                      ? "text-primary-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  {activeSection === link.id && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute inset-0 bg-primary rounded-full glow-white"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  <span className="relative z-10">{link.label}</span>
+                </a>
+              ))}
+            </div>
           </motion.div>
 
-          {/* Theme Toggle - Desktop */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="hidden md:block"
-          >
-            <ThemeToggle />
-          </motion.div>
-
-          {/* Contact Button - Desktop */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="hidden md:block"
-          >
-            <Button
-              onClick={() => handleNavClick('contact')}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold glow-orange"
-              size="sm"
+          <div className="hidden lg:flex items-center gap-4">
+            <a
+              href="#contact"
+              onClick={(e) => handleNavClick('contact', e)}
+              className={cn(
+                "bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-6 py-2 glow-white hover:scale-105 transition-transform inline-flex items-center justify-center"
+              )}
             >
               Get in Touch
-            </Button>
-          </motion.div>
+            </a>
+          </div>
 
-          {/* Mobile Controls - Theme Toggle and Menu Button */}
-          <div className="flex md:hidden items-center gap-2">
-            <ThemeToggle />
+          {/* Mobile Controls */}
+          <div className="flex lg:hidden items-center gap-4">
             <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
+              whileTap={{ scale: 0.9 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
+              className="p-2 rounded-lg text-foreground hover:bg-white/10 transition-colors"
             >
-              {isOpen ? (
-                <X className="h-6 w-6 text-primary" />
-              ) : (
-                <Menu className="h-6 w-6 text-foreground" />
-              )}
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </motion.button>
           </div>
         </div>
@@ -157,30 +150,35 @@ export default function Navbar() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden border-t border-primary/20 bg-background/95 backdrop-blur-sm"
+              className="lg:hidden overflow-hidden bg-background/95 backdrop-blur-xl border-t border-white/10"
             >
-              <div className="px-4 py-4 space-y-2">
+              <div className="px-4 py-6 space-y-2">
                 {navLinks.map((link) => (
-                  <motion.button
+                  <motion.a
                     key={link.id}
+                    href={link.href}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    onClick={() => handleNavClick(link.id)}
-                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 font-medium ${activeSection === link.id
-                      ? 'bg-primary/20 text-primary border border-primary/50 glow-orange'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-primary/10'
-                      }`}
+                    onClick={(e) => handleNavClick(link.id, e)}
+                    className={cn(
+                      "block w-full text-left px-4 py-3 rounded-lg transition-all duration-300 font-medium",
+                      activeSection === link.id
+                        ? "bg-primary/20 text-primary border border-primary/50 glow-white"
+                        : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                    )}
                   >
                     {link.label}
-                  </motion.button>
+                  </motion.a>
                 ))}
-                <Button
-                  onClick={() => handleNavClick('contact')}
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold glow-orange mt-4"
-                >
-                  Get in Touch
-                </Button>
+                <div className="pt-4">
+                  <a
+                    href="#contact"
+                    onClick={(e) => handleNavClick('contact', e)}
+                    className="flex items-center justify-center w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg px-4 py-2 glow-white transition-colors"
+                  >
+                    Get in Touch
+                  </a>
+                </div>
               </div>
             </motion.div>
           )}

@@ -61,14 +61,14 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-purple-950/20 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-white/5 to-background" />
 
       {/* Animated particles */}
       <div className="absolute inset-0 opacity-20">
         {particles.map((particle, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-primary rounded-full"
+            className="absolute w-1 h-1 bg-white rounded-full"
             style={{
               left: `${particle.left}%`,
               top: `${particle.top}%`,
@@ -94,10 +94,10 @@ export default function ContactSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 glow-text-purple" style={{ fontFamily: 'Orbitron, sans-serif' }}>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 glow-text-white" style={{ fontFamily: 'Orbitron, sans-serif' }}>
             Get In Touch
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-neon-purple to-neon-cyan mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-white/20 mx-auto rounded-full" />
           <p className="text-muted-foreground mt-4 text-base sm:text-lg">
             Let's connect and build something amazing together
           </p>
@@ -113,23 +113,23 @@ export default function ContactSection() {
               transition={{ duration: 0.6 }}
               className="space-y-6"
             >
-              <div className="glass rounded-2xl p-8 glow-cyan border border-primary/20 hover:border-primary/50 transition-all duration-300 shadow-xl shadow-primary/20">
+              <div className="glass rounded-2xl p-8 glow-white border border-white/20 hover:border-white/50 transition-all duration-300 shadow-xl shadow-white/5">
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-2xl font-bold text-foreground" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
                     Contact Information
                   </h3>
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                    <Mail className="h-4 w-4 text-primary-foreground" />
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                    <Mail className="h-4 w-4 text-primary" />
                   </div>
                 </div>
 
                 <div className="space-y-6">
                   <div className="flex items-start gap-4 group">
-                    <div className="p-3 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 group-hover:from-primary/30 group-hover:to-primary/20 transition-all duration-300">
-                      <Mail className="h-6 w-6 text-primary" />
+                    <div className="p-3 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300">
+                      <Mail className="h-6 w-6 text-foreground" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-xs font-semibold text-primary uppercase tracking-widest mb-2">Email Address</h4>
+                      <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-2">Email Address</h4>
                       <a
                         href="mailto:99sahil9426@gmail.com"
                         className="text-lg font-semibold text-foreground hover:text-primary transition-colors duration-300 break-all"
@@ -141,16 +141,16 @@ export default function ContactSection() {
                   </div>
 
                   <div className="flex items-start gap-4 group">
-                    <div className="p-3 rounded-lg bg-gradient-to-br from-blue-500/20 to-blue-500/10 group-hover:from-blue-500/30 group-hover:to-blue-500/20 transition-all duration-300">
-                      <Linkedin className="h-6 w-6 text-blue-400" />
+                    <div className="p-3 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300">
+                      <Linkedin className="h-6 w-6 text-foreground" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-xs font-semibold text-blue-400 uppercase tracking-widest mb-2">LinkedIn</h4>
+                      <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-2">LinkedIn</h4>
                       <a
                         href="https://www.linkedin.com/in/patel-sahil9124/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-lg font-semibold text-foreground hover:text-blue-400 transition-colors duration-300"
+                        className="text-lg font-semibold text-foreground hover:text-primary transition-colors duration-300"
                       >
                         patelsahil9124
                       </a>
@@ -159,22 +159,22 @@ export default function ContactSection() {
                   </div>
 
                   <div className="flex items-start gap-4 group">
-                    <div className="p-3 rounded-lg bg-gradient-to-br from-orange-500/20 to-orange-500/10 group-hover:from-orange-500/30 group-hover:to-orange-500/20 transition-all duration-300">
-                      <MapPin className="h-6 w-6 text-orange-400" />
+                    <div className="p-3 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-300">
+                      <MapPin className="h-6 w-6 text-foreground" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-xs font-semibold text-orange-400 uppercase tracking-widest mb-2">Location</h4>
+                      <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-2">Location</h4>
                       <p className="text-lg font-semibold text-foreground">Surat, Gujarat</p>
                       <p className="text-xs text-muted-foreground mt-1">India</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-8 pt-8 border-t border-primary/20">
-                  <div className="flex items-start gap-3 p-4 rounded-lg bg-primary/5 border border-primary/20">
-                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="mt-8 pt-8 border-t border-white/10">
+                  <div className="flex items-start gap-3 p-4 rounded-lg bg-white/5 border border-white/10">
+                    <CheckCircle className="h-5 w-5 text-foreground flex-shrink-0 mt-0.5" />
                     <p className="text-sm leading-relaxed text-foreground">
-                      <span className="font-semibold text-primary">Let's collaborate!</span> I'm always interested in discussing new projects, innovative ideas, and exciting opportunities.
+                      <span className="font-semibold text-foreground">Let's collaborate!</span> I'm always interested in discussing new projects, innovative ideas, and exciting opportunities.
                     </p>
                   </div>
                 </div>
@@ -189,13 +189,13 @@ export default function ContactSection() {
               transition={{ duration: 0.6 }}
               className="flex items-center justify-center"
             >
-              <div className="glass rounded-2xl p-8 w-full hover:glow-purple transition-all duration-300 border border-primary/20 hover:border-primary/50 shadow-xl shadow-purple/20">
+              <div className="glass rounded-2xl p-8 w-full hover:glow-white transition-all duration-300 border border-white/20 hover:border-white/50 shadow-xl shadow-white/5">
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-2xl font-bold text-foreground" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
                     Send me a Message
                   </h3>
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                    <Send className="h-4 w-4 text-white" />
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                    <Send className="h-4 w-4 text-foreground" />
                   </div>
                 </div>
 
@@ -204,7 +204,7 @@ export default function ContactSection() {
                   <input type="hidden" name="from_name" value="Sahil Patel Portfolio" />
 
                   <div>
-                    <label htmlFor="name" className="text-xs font-semibold text-primary uppercase tracking-widest mb-2 block">
+                    <label htmlFor="name" className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-2 block">
                       Full Name
                     </label>
                     <Input
@@ -213,12 +213,12 @@ export default function ContactSection() {
                       name="name"
                       placeholder="John Doe"
                       required
-                      className="bg-background/50 border-primary/30 focus:border-primary focus:ring-1 focus:ring-primary/50"
+                      className="bg-background/50 border-white/20 focus:border-white/50 focus:ring-1 focus:ring-white/20"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="text-xs font-semibold text-primary uppercase tracking-widest mb-2 block">
+                    <label htmlFor="email" className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-2 block">
                       Email Address
                     </label>
                     <Input
@@ -227,16 +227,16 @@ export default function ContactSection() {
                       name="email"
                       placeholder="john@example.com"
                       required
-                      className="bg-background/50 border-primary/30 focus:border-primary focus:ring-1 focus:ring-primary/50"
+                      className="bg-background/50 border-white/20 focus:border-white/50 focus:ring-1 focus:ring-white/20"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="text-xs font-semibold text-primary uppercase tracking-widest mb-2 block">
+                    <label htmlFor="subject" className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-2 block">
                       Inquiry Type
                     </label>
                     <Select name="subject" required>
-                      <SelectTrigger className="bg-background/50 border-primary/30 focus:border-primary focus:ring-1 focus:ring-primary/50">
+                      <SelectTrigger className="bg-background/50 border-white/20 focus:border-white/50 focus:ring-1 focus:ring-white/20">
                         <SelectValue placeholder="Select an inquiry type" />
                       </SelectTrigger>
                       <SelectContent>
@@ -251,7 +251,7 @@ export default function ContactSection() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="text-xs font-semibold text-primary uppercase tracking-widest mb-2 block">
+                    <label htmlFor="message" className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-2 block">
                       Your Message
                     </label>
                     <Textarea
@@ -260,7 +260,7 @@ export default function ContactSection() {
                       placeholder="Tell me about your project, idea, or opportunity..."
                       required
                       rows={4}
-                      className="bg-background/50 border-primary/30 focus:border-primary focus:ring-1 focus:ring-primary/50 resize-none"
+                      className="bg-background/50 border-white/20 focus:border-white/50 focus:ring-1 focus:ring-white/20 resize-none"
                     />
                   </div>
 
@@ -287,7 +287,7 @@ export default function ContactSection() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-primary-foreground glow-cyan font-semibold py-6 text-base transition-all duration-300 shadow-lg shadow-primary/50 hover:shadow-xl hover:shadow-primary/50"
+                    className="w-full bg-foreground hover:bg-foreground/90 text-background glow-white font-semibold py-6 text-base transition-all duration-300"
                   >
                     <Send className="mr-2 h-5 w-5" />
                     {isSubmitting ? 'Sending your message...' : 'Send Message'}

@@ -6,14 +6,14 @@ export default function SuccessPage() {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4 relative overflow-hidden">
       {/* Animated background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-purple-950/20 to-background" />
-      
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-white/5 to-background" />
+
       {/* Animated particles */}
       <div className="absolute inset-0 opacity-20">
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-primary rounded-full"
+            className="absolute w-1 h-1 bg-white rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -37,7 +37,7 @@ export default function SuccessPage() {
         transition={{ duration: 0.6 }}
         className="relative z-10 max-w-md w-full"
       >
-        <div className="glass rounded-3xl p-8 md:p-12 border border-primary/20 shadow-2xl shadow-primary/20">
+        <div className="glass rounded-3xl p-8 md:p-12 border border-white/20 shadow-2xl shadow-white/5">
           {/* Success Icon */}
           <motion.div
             initial={{ scale: 0 }}
@@ -49,10 +49,10 @@ export default function SuccessPage() {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-purple-600 opacity-20 aspect-square"
-              /> 
+                className="absolute inset-0 rounded-full bg-white/10 opacity-20 aspect-square"
+              />
               <div className="absolute inset-0 flex items-center justify-center">
-                <CheckCircle className="h-12 w-12 text-green-400" />
+                <CheckCircle className="h-12 w-12 text-foreground" />
               </div>
             </div>
           </motion.div>
@@ -83,11 +83,11 @@ export default function SuccessPage() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="bg-primary/10 border border-primary/30 rounded-xl p-4 mb-8 flex items-start gap-3"
+            className="bg-white/5 border border-white/10 rounded-xl p-4 mb-8 flex items-start gap-3"
           >
-            <Mail className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+            <Mail className="h-5 w-5 text-foreground flex-shrink-0 mt-0.5" />
             <div>
-              <p className="text-sm font-semibold text-primary mb-1">Check your inbox</p>
+              <p className="text-sm font-semibold text-foreground mb-1">Check your inbox</p>
               <p className="text-xs text-muted-foreground">
                 I'll send you a confirmation email shortly. Please check your spam folder if you don't see it.
               </p>
@@ -103,7 +103,7 @@ export default function SuccessPage() {
           >
             <Button
               onClick={() => window.location.href = '/'}
-              className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-primary-foreground font-semibold py-6"
+              className="w-full bg-foreground hover:bg-foreground/90 text-background font-semibold py-6 glow-white"
             >
               <ArrowRight className="mr-2 h-5 w-5" />
               Back to Home
@@ -111,7 +111,7 @@ export default function SuccessPage() {
             <Button
               onClick={() => window.location.href = '/#contact'}
               variant="outline"
-              className="w-full border-primary/50 text-foreground hover:bg-primary/10"
+              className="w-full border-white/50 text-foreground hover:bg-white/10"
             >
               Send Another Message
             </Button>
@@ -129,7 +129,7 @@ export default function SuccessPage() {
               href="https://www.linkedin.com/in/patel-sahil9124/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary hover:text-primary/80 transition-colors"
+              className="text-foreground hover:text-foreground/80 transition-colors underline"
             >
               LinkedIn
             </a>

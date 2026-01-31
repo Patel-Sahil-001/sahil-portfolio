@@ -46,7 +46,7 @@ const certifications = [
 export default function EducationSection() {
   return (
     <section id="education" className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-purple-950/10 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-white/5 to-background" />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -56,17 +56,17 @@ export default function EducationSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 glow-text-purple" style={{ fontFamily: 'Orbitron, sans-serif' }}>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 glow-text-white" style={{ fontFamily: 'Orbitron, sans-serif' }}>
             Education & Certifications
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-neon-purple to-neon-cyan mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-white/20 mx-auto rounded-full" />
         </motion.div>
 
         {/* Education Timeline */}
         <div className="max-w-4xl mx-auto mb-16">
           <div className="relative">
             {/* Vertical line */}
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-neon-cyan via-neon-purple to-neon-blue" />
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-white/20" />
 
             {educationData.map((edu, index) => (
               <motion.div
@@ -78,23 +78,23 @@ export default function EducationSection() {
                 className={`relative mb-12 ${index % 2 === 0 ? 'md:pr-1/2' : 'md:pl-1/2 md:ml-auto'} md:w-1/2 pl-20 md:pl-0`}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-8 md:left-auto md:right-[-8px] top-6 w-4 h-4 rounded-full bg-primary glow-cyan" />
+                <div className="absolute left-8 md:left-auto md:right-[-8px] top-6 w-4 h-4 rounded-full bg-foreground glow-white" />
 
-                <div className="glass rounded-xl p-6 hover:glow-purple transition-all duration-300">
+                <div className="glass rounded-xl p-6 hover:glow-white transition-all duration-300">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="p-3 rounded-lg bg-primary/10">
-                      <GraduationCap className="h-6 w-6 text-primary" />
+                    <div className="p-3 rounded-lg bg-white/10">
+                      <GraduationCap className="h-6 w-6 text-foreground" />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-foreground mb-1">{edu.degree}</h3>
-                      <p className="text-primary font-semibold">{edu.institution}</p>
-                      <p className="text-sm text-muted-foreground">{edu.location}</p>
+                      <p className="text-muted-foreground font-semibold">{edu.institution}</p>
+                      <p className="text-sm text-muted-foreground/70">{edu.location}</p>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-2 mb-3">
-                    <Calendar className="h-4 w-4 text-primary" />
-                    <span className="text-sm text-primary font-semibold">{edu.period}</span>
+                    <Calendar className="h-4 w-4 text-foreground" />
+                    <span className="text-sm text-foreground font-semibold">{edu.period}</span>
                   </div>
 
                   <p className="text-muted-foreground">{edu.description}</p>
@@ -124,12 +124,12 @@ export default function EducationSection() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
-                className="glass rounded-xl p-6 hover:glow-cyan transition-all duration-300 cursor-pointer"
+                className="glass rounded-xl p-6 hover:glow-white transition-all duration-300 cursor-pointer"
               >
-                <div className="text-4xl mb-3">{cert.icon}</div>
+                <div className="text-4xl mb-3 grayscale">{cert.icon}</div>
                 <h4 className="text-xl font-bold text-foreground mb-2">{cert.title}</h4>
-                <p className="text-primary font-semibold mb-1">{cert.issuer}</p>
-                <p className="text-sm text-muted-foreground">{cert.year}</p>
+                <p className="text-muted-foreground font-semibold mb-1">{cert.issuer}</p>
+                <p className="text-sm text-muted-foreground/70">{cert.year}</p>
               </motion.div>
             ))}
           </div>
