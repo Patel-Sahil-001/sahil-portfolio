@@ -121,7 +121,7 @@ export default function CertificatesSection() {
     <section id="certificates" ref={container} className="relative bg-[#0a0a0f] text-white">
       {/* Intro Heading */}
       <div className="h-[50vh] flex flex-col items-center justify-center sticky top-0 z-0">
-        <h2 className="text-6xl md:text-8xl font-bold tracking-tighter text-white/90" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
+        <h2 className="text-6xl md:text-8xl font-bold tracking-widest text-white/90" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
           CERTIFICATIONS
         </h2>
         <p className="mt-4 text-white/40 tracking-[0.2em] text-sm uppercase">Scroll to explore</p>
