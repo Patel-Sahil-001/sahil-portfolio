@@ -47,6 +47,7 @@ export default function HeroSection() {
           colorFrequency={1}
           noise={0}
           glow={1}
+          suspendWhenOffscreen={true} // Performance: Pause WebGL when not visible
         />
       </div>
 

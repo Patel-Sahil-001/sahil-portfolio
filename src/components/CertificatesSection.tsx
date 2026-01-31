@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { useScroll, useTransform, motion, MotionValue } from 'framer-motion';
-import Lenis from 'lenis';
+// import Lenis from 'lenis'; // Removed for performance
 import { ExternalLink } from 'lucide-react';
 
 const certificates = [
@@ -100,17 +100,8 @@ export default function CertificatesSection() {
 
   // Smooth scroll using Lenis (scoped to this component effect, or global if user prefers)
   // Usually Lenis is used globally, but here we can just ensure it runs.
-  useEffect(() => {
-    const lenis = new Lenis();
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-    return () => {
-      lenis.destroy();
-    }
-  }, []);
+  // Removed Lenis to fix scroll lag and performance issues.
+  // Native browser scrolling is more performant on mobile/low-end devices.
 
   const { scrollYProgress } = useScroll({
     target: container,
