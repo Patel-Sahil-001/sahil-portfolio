@@ -189,7 +189,7 @@ export default function ContactSection() {
               transition={{ duration: 0.6 }}
               className="flex items-center justify-center"
             >
-              <div className="glass rounded-2xl p-8 w-full hover:glow-white transition-all duration-300 border border-white/20 hover:border-white/50 shadow-xl shadow-white/5">
+              <div className="glass rounded-2xl p-8 w-full glow-white transition-all duration-300 border border-white/20 hover:border-white/50 shadow-xl shadow-white/5">
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-2xl font-bold text-foreground" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
                     Send me a Message
