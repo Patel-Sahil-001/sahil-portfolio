@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Code2 } from 'lucide-react';
 import { Button } from './ui/button';
+import AnimatedButton from './ui/animated-button';
 
 const projects = [
   {
@@ -146,21 +147,21 @@ export default function ProjectsSection() {
 
                   {/* Action Buttons */}
                   <div className="flex gap-3">
-                    <Button
+                    <AnimatedButton
                       onClick={() => window.open(project.liveLink)}
-                      className="flex-1 bg-primary hover:bg-white/90 text-primary-foreground font-semibold border border-transparent hover:border-white/20"
+                      className="flex-1 font-semibold"
                     >
-                      <ExternalLink className="mr-2 h-4 w-4" />
+                      <ExternalLink className="mr-2 h-4 w-4 inline" />
                       View Live
-                    </Button>
-                    <Button
+                    </AnimatedButton>
+                    <AnimatedButton
                       onClick={() => window.open(project.githubLink)}
                       variant="outline"
-                      className="flex-1 border-white/50 text-foreground hover:bg-white/10"
+                      className="flex-1"
                     >
-                      <Github className="mr-2 h-4 w-4" />
+                      <Github className="mr-2 h-4 w-4 inline" />
                       Code
-                    </Button>
+                    </AnimatedButton>
                   </div>
                 </div>
               </div>

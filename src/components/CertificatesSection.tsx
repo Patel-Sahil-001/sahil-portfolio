@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react';
 import { useScroll, useTransform, motion, MotionValue } from 'framer-motion';
 // import Lenis from 'lenis'; // Removed for performance
 import { ExternalLink } from 'lucide-react';
+import AnimatedButton from './ui/animated-button';
 
 const certificates = [
   {
@@ -85,9 +86,14 @@ const StickyCard = ({ i, title, org, date, tags, src, mockGradient, progress, ra
 
           <div className="flex justify-between items-end mt-4 pt-4 border-t border-white/5">
             <span className="text-white/30 font-mono text-xs">{date}</span>
-            <a href={src} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-widest text-white hover:text-white/70 transition-colors">
-              View Credential <ExternalLink className="w-3 h-3" />
-            </a>
+            <AnimatedButton
+              href={src}
+              target="_blank"
+              rel="noreferrer"
+              className="text-[10px] uppercase tracking-widest px-3 py-1"
+            >
+              View Credential <ExternalLink className="w-3 h-3 inline ml-1" />
+            </AnimatedButton>
           </div>
         </div>
       </motion.div>

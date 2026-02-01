@@ -5,6 +5,7 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { useState, useMemo } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+import AnimatedButton from './ui/animated-button';
 
 export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -284,14 +285,14 @@ export default function ContactSection() {
                     </div>
                   )}
 
-                  <Button
+                  <AnimatedButton
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-foreground hover:bg-foreground/90 text-background glow-white font-semibold py-6 text-base transition-all duration-300"
+                    className="w-full font-semibold py-3 text-base transition-all duration-300"
                   >
-                    <Send className="mr-2 h-5 w-5" />
+                    <Send className="mr-2 h-5 w-5 inline" />
                     {isSubmitting ? 'Sending your message...' : 'Send Message'}
-                  </Button>
+                  </AnimatedButton>
                 </form>
               </div>
             </motion.div>

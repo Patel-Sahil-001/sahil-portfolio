@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { Button } from './ui/button';
+import AnimatedButton from './ui/animated-button';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
@@ -119,15 +120,12 @@ export default function Navbar() {
           </motion.div>
 
           <div className="hidden lg:flex items-center gap-4">
-            <a
-              href="#contact"
+            <AnimatedButton
               onClick={(e) => handleNavClick('contact', e)}
-              className={cn(
-                "bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-6 py-2 glow-white hover:scale-105 transition-transform inline-flex items-center justify-center"
-              )}
+              className="text-sm font-semibold"
             >
               Get in Touch
-            </a>
+            </AnimatedButton>
           </div>
 
           {/* Mobile Controls */}
@@ -171,13 +169,15 @@ export default function Navbar() {
                   </motion.a>
                 ))}
                 <div className="pt-4">
-                  <a
-                    href="#contact"
-                    onClick={(e) => handleNavClick('contact', e)}
-                    className="flex items-center justify-center w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg px-4 py-2 glow-white transition-colors"
+                  <AnimatedButton
+                    onClick={(e) => {
+                      handleNavClick('contact', e);
+                      setIsOpen(false);
+                    }}
+                    className="w-full text-base font-semibold"
                   >
                     Get in Touch
-                  </a>
+                  </AnimatedButton>
                 </div>
               </div>
             </motion.div>
