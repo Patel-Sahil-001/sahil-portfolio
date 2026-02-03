@@ -56,7 +56,7 @@ export default function EducationSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 glow-text-white" style={{ fontFamily: 'Orbitron, sans-serif' }}>
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 glow-text-white tracking-widest uppercase" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
             Education & Certifications
           </h2>
           <div className="w-24 h-1 bg-white/20 mx-auto rounded-full" />
