@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Instagram, Github, Linkedin, Eye } from 'lucide-react';
-import { Button } from './ui/button';
 import ScrollReveal from './ScrollReveal';
 import { AnimatedDock } from './ui/animated-dock';
 import DownloadButton from './ui/button-download';
@@ -119,7 +118,7 @@ export default function AboutSection() {
                     containerClassName="!m-0"
                     textClassName="!text-xs sm:!text-sm !leading-relaxed !font-normal text-muted-foreground"
                   >
-                    Aspiring Software Developer with a strong foundation in Java, Python, and full-stack web development, focused on building efficient and scalable software solutions.
+                    Aspiring Software Developer with a strong foundation in Python, and full-stack web development, focused on building efficient and scalable software solutions.
                   </ScrollReveal>
                 </div>
               </div>

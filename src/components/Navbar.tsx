@@ -1,7 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
-import { Button } from './ui/button';
 import AnimatedButton from './ui/animated-button';
 import { cn } from '@/lib/utils';
 

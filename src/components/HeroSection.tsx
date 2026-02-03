@@ -7,7 +7,7 @@ export default function HeroSection() {
 
   // Initial Split Text Data
   const titleText = "PATEL SAHIL";
-  const subtitleText = "Aspiring Software Developer | Java & Python Enthusiast | UI/UX Explorer";
+  const subtitleText = "Aspiring Software Developer | Python Enthusiast | UI/UX Explorer";
 
   // Stagger animation variants
   const letterContainer = {

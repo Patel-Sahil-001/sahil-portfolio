@@ -1,6 +1,6 @@
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Code2 } from 'lucide-react';
-import { Button } from './ui/button';
 import AnimatedButton from './ui/animated-button';
 
 const projects = [
@@ -19,8 +19,6 @@ const projects = [
     image: '/StockFlow-project.png'
   }
 ];
-
-import { useMemo } from 'react';
 
 export default function ProjectsSection() {
   const particles = useMemo(() => {
