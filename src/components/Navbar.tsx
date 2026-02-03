@@ -65,13 +65,19 @@ export default function Navbar() {
   const handleNavClick = (id: string, e: React.MouseEvent) => {
     e.preventDefault();
     setActiveSection(id);
+
+    // Close menu first
     setIsOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      const yOffset = -80;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+
+    // Then scroll after a small delay to ensure menu is closing
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        const yOffset = -80;
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }, 100);
   };
 
   return (
@@ -133,7 +139,9 @@ export default function Navbar() {
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg text-foreground hover:bg-white/10 transition-colors"
+              className="p-2 rounded-lg text-foreground hover:bg-white/10 transition-colors relative z-50"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </motion.button>
@@ -172,7 +180,6 @@ export default function Navbar() {
                   <AnimatedButton
                     onClick={(e) => {
                       handleNavClick('contact', e);
-                      setIsOpen(false);
                     }}
                     className="w-full text-base font-semibold"
                   >
