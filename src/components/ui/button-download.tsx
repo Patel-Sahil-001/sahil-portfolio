@@ -17,7 +17,7 @@ export default function DownloadButton({ downloadStatus, progress, onClick, clas
             onClick={onClick}
             variant="outline"
             className={cn(
-                "rounded-xl w-40 relative overflow-hidden select-none gap-2 group",
+                "rounded-xl relative overflow-hidden select-none gap-2 group",
                 downloadStatus === "downloading" && "bg-primary/50 hover:bg-primary/50",
                 downloadStatus !== "idle" && "pointer-events-none",
                 className,
