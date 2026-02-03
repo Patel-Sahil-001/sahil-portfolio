@@ -9,6 +9,7 @@ import AnimatedButton from './ui/animated-button';
 export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [inquiryType, setInquiryType] = useState('');
 
   const particles = useMemo(() => {
     return [...Array(20)].map(() => ({
@@ -42,10 +43,11 @@ export default function ContactSection() {
       if (data.success) {
         setSubmitStatus('success');
         (e.target as HTMLFormElement).reset();
-        // Redirect to success page after 1.5 seconds
+        setInquiryType(''); // Reset inquiry type
+        // Reset status after showing success message
         setTimeout(() => {
-          window.location.href = '/success';
-        }, 1500);
+          setSubmitStatus('idle');
+        }, 3000);
       } else {
         setSubmitStatus('error');
         setTimeout(() => setSubmitStatus('idle'), 5000);
@@ -235,7 +237,7 @@ export default function ContactSection() {
                     <label htmlFor="subject" className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-2 block">
                       Inquiry Type
                     </label>
-                    <Select name="subject" required>
+                    <Select name="subject" required value={inquiryType} onValueChange={setInquiryType}>
                       <SelectTrigger className="bg-background/50 border-white/20 focus:border-white/50 focus:ring-1 focus:ring-white/20">
                         <SelectValue placeholder="Select an inquiry type" />
                       </SelectTrigger>
