@@ -32,7 +32,7 @@ export default function AboutSection() {
   const [progress, setProgress] = useState(0);
 
   const handleViewResume = () => {
-    window.open('/Resume 1.pdf', '_blank');
+    window.open('/Resume.pdf', '_blank');
   };
 
   const handleDownloadResume = () => {
