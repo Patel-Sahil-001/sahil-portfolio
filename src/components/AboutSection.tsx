@@ -49,7 +49,7 @@ export default function AboutSection() {
 
           // Trigger actual download
           const link = document.createElement('a');
-          link.href = '/Resume 1.pdf';
+          link.href = '/Resume.pdf';
           link.download = 'Sahil_Patel_Resume.pdf';
           document.body.appendChild(link);
           link.click();
