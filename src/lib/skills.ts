@@ -1,47 +1,46 @@
 export const skillCategories = [
     {
-        category: "Programming Languages",
+        category: "MERN Stack",
         color: "white",
         gradientClass: "from-white to-gray-400",
         skills: [
-            { name: "Python", level: 90 },
-            { name: "Java", level: 85 },
-            { name: "C++", level: 80 },
-            { name: "C", level: 75 },
-            { name: "JavaScript", level: 70 },
+            { name: "MongoDB", level: 85 },
+            { name: "Express.js", level: 85 },
+            { name: "React", level: 90 },
+            { name: "Node.js", level: 85 },
         ]
     },
     {
-        category: "Web Technologies",
+        category: "Frontend Development",
         color: "white",
         gradientClass: "from-gray-400 to-white",
         skills: [
-            { name: "HTML5", level: 90 },
-            { name: "CSS3", level: 85 },
-            { name: "React", level: 70 },
-            { name: "Tailwind CSS", level: 80 },
+            { name: "HTML5", level: 95 },
+            { name: "CSS3", level: 90 },
+            { name: "JavaScript (ES6+)", level: 90 },
+            { name: "Tailwind CSS", level: 85 },
         ]
     },
     {
-        category: "Design & Tools",
+        category: "Backend & APIs",
         color: "white",
         gradientClass: "from-white to-gray-400",
         skills: [
-            { name: "UI/UX Design", level: 85 },
-            { name: "Figma", level: 80 },
-            { name: "Windows UX", level: 75 },
-            { name: "Prompt Engineering", level: 70 },
+            { name: "REST APIs", level: 85 },
+            { name: "JWT Authentication", level: 80 },
+            { name: "MVC Architecture", level: 85 },
+            { name: "API Security", level: 75 },
         ]
     },
     {
-        category: "Computer Science",
+        category: "Development Tools",
         color: "white",
         gradientClass: "from-gray-400 to-white",
         skills: [
-            { name: "Data Structures", level: 85 },
-            { name: "Algorithms", level: 80 },
-            { name: "Problem Solving", level: 90 },
-            { name: "Database Systems", level: 75 },
+            { name: "Git & GitHub", level: 85 },
+            { name: "npm/yarn", level: 85 },
+            { name: "Postman", level: 80 },
+            { name: "VS Code", level: 90 },
         ]
     }
 ];

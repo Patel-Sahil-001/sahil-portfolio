@@ -7,7 +7,7 @@ export default function HeroSection() {
 
   // Initial Split Text Data
   const titleText = "PATEL SAHIL";
-  const subtitleText = "Aspiring Software Developer | Python Enthusiast | UI/UX Explorer";
+  const subtitleText = "Web Developer | MERN Stack Developer | Full-Stack Engineer";
 
   // Stagger animation variants
   const letterContainer = {
@@ -82,7 +82,8 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="text-lg md:text-2xl text-white/80 font-light max-w-2xl font-sans"
+          className="text-lg md:text-2xl text-white/90 font-light max-w-2xl font-sans"
+          style={{ filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.2))' }}
         >
           {subtitleText}
         </motion.p>

@@ -74,7 +74,7 @@ export default function AboutSection() {
   };
 
   return (
-    <section id="about" className="py-12 relative overflow-hidden">
+    <section id="about" className="py-12 relative overflow-hidden gradient-bg-animate">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-white/5 to-background" />
 
       <div className="container mx-auto px-4 relative z-10">
@@ -101,7 +101,7 @@ export default function AboutSection() {
             className="space-y-4 order-2 md:order-1"
           >
             {/* Who I Am Card */}
-            <div className="glass rounded-xl p-4 hover:glow-white transition-all duration-300 group">
+            <div className="glass-premium rounded-xl p-4 glass-card-hover shimmer pulse-glow group">
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
                   <svg className="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,14 +118,14 @@ export default function AboutSection() {
                     containerClassName="!m-0"
                     textClassName="!text-xs sm:!text-sm !leading-relaxed !font-normal text-muted-foreground"
                   >
-                    Aspiring Software Developer with a strong foundation in Python, and full-stack web development, focused on building efficient and scalable software solutions.
+                    Web Developer specializing in the MERN Stack (MongoDB, Express.js, React, Node.js), focused on building scalable, full-stack web applications with modern technologies and best practices.
                   </ScrollReveal>
                 </div>
               </div>
             </div>
 
             {/* Education Card */}
-            <div className="glass rounded-xl p-4 hover:glow-white transition-all duration-300 group">
+            <div className="glass-premium rounded-xl p-4 glass-card-hover shimmer pulse-glow group">
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
                   <svg className="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -151,7 +151,7 @@ export default function AboutSection() {
             </div>
 
             {/* Career Objective Card */}
-            <div className="glass rounded-xl p-4 hover:glow-white transition-all duration-300 group">
+            <div className="glass-premium rounded-xl p-4 glass-card-hover shimmer pulse-glow group">
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
                   <svg className="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -168,7 +168,7 @@ export default function AboutSection() {
                     containerClassName="!m-0"
                     textClassName="!text-xs sm:!text-sm !leading-relaxed !font-normal text-muted-foreground"
                   >
-                    To begin my career as a software developer, continuously enhance my technical expertise, and contribute to impactful, real-world software projects.
+                    To build a career as a MERN Stack developer, continuously enhance my expertise in full-stack web development, and contribute to impactful, scalable web applications.
                   </ScrollReveal>
                 </div>
               </div>
@@ -202,12 +202,12 @@ export default function AboutSection() {
           >
             {/* Profile Photo */}
             <motion.div
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, rotate: 1 }}
               transition={{ duration: 0.3 }}
-              className="relative group"
+              className="relative group float-animation"
             >
-              <div className="absolute inset-0 bg-white/20 rounded-3xl blur-2xl group-hover:bg-white/30 transition-all duration-300" />
-              <div className="relative glass rounded-3xl p-3 overflow-hidden border-2 border-white/30 group-hover:border-white/50 transition-all duration-300">
+              <div className="absolute inset-0 bg-white/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500" />
+              <div className="relative glass-premium rounded-3xl p-3 overflow-hidden border-2 border-white/30 group-hover:border-white/50 transition-all duration-500 shimmer">
                 <img
                   src="/profile-photo.png"
                   alt="Sahil Patel"

@@ -4,7 +4,7 @@ import { skillCategories } from '@/lib/skills';
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="py-20 relative overflow-hidden">
+    <section id="skills" className="py-20 relative overflow-hidden gradient-bg-animate">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-white/5 to-background" />
 
       <div className="container mx-auto px-4 relative z-10">
@@ -33,7 +33,7 @@ export default function SkillsSection() {
               whileHover={{ scale: 1.05 }}
               viewport={{ once: true }}
               transition={{ delay: categoryIndex * 0.1 }}
-              className="glass rounded-2xl p-8 hover:glow-white transition-all duration-300"
+              className="glass-premium rounded-2xl p-8 glass-card-hover shimmer pulse-glow"
             >
               <h3 className="text-xl md:text-2xl font-bold mb-6 text-foreground" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
                 {category.category}
@@ -53,7 +53,7 @@ export default function SkillsSection() {
                         transition={{ delay: categoryIndex * 0.1 + skillIndex * 0.1, duration: 1, ease: "easeOut" }}
                         className="h-full bg-white rounded-full"
                         style={{
-                          boxShadow: `0 0 10px rgba(255, 255, 255, 0.5)`
+                          boxShadow: '0 0 15px rgba(255, 255, 255, 0.5)'
                         }}
                       />
                     </div>
@@ -72,11 +72,11 @@ export default function SkillsSection() {
           transition={{ delay: 0.6 }}
           className="flex flex-wrap justify-center gap-4 mt-12"
         >
-          {['Python', 'Java', 'React', 'UI/UX', 'DSA', 'CSS3', 'Figma', 'C++'].map((tech, index) => (
+          {['MongoDB', 'Express.js', 'React', 'Node.js', 'JWT', 'REST API', 'JavaScript', 'CSS3'].map((tech, index) => (
             <motion.div
               key={tech}
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              className="glass px-6 py-3 rounded-full text-foreground font-semibold glow-white cursor-pointer hover:bg-white/20"
+              whileHover={{ scale: 1.15, rotate: 5 }}
+              className="glass-premium px-6 py-3 rounded-full text-foreground font-semibold pulse-glow cursor-pointer hover:bg-white/20 shimmer"
             >
               {tech}
             </motion.div>
