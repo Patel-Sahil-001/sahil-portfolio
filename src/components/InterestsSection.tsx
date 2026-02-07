@@ -30,7 +30,7 @@ const interests = [
 
 export default function InterestsSection() {
   return (
-    <section id="interests" className="py-20 relative overflow-hidden">
+    <section id="interests" className="py-20 relative overflow-hidden gradient-bg-animate">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-white/5 to-background" />
 
       <div className="container mx-auto px-4 relative z-10">
@@ -61,7 +61,7 @@ export default function InterestsSection() {
               whileHover={{ scale: 1.05 }}
               className="relative group"
             >
-              <div className="glass rounded-2xl p-8 h-full hover:glow-white transition-all duration-300">
+              <div className="glass-premium rounded-2xl p-8 h-full glass-card-hover shimmer pulse-glow">
                 {/* Gradient background on hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${interest.gradient} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300`} />
 
@@ -94,7 +94,7 @@ export default function InterestsSection() {
           transition={{ delay: 0.4 }}
           className="mt-16 text-center"
         >
-          <div className="glass rounded-2xl p-8 max-w-3xl mx-auto">
+          <div className="glass-premium rounded-2xl p-8 max-w-3xl mx-auto shimmer pulse-glow">
             <p className="text-lg text-muted-foreground leading-relaxed">
               I'm constantly exploring the intersection of <span className="text-foreground font-semibold">technology and design</span>,
               seeking to create solutions that are not only functionally robust but also

@@ -45,7 +45,7 @@ const certifications = [
 
 export default function EducationSection() {
   return (
-    <section id="education" className="py-20 relative overflow-hidden">
+    <section id="education" className="py-20 relative overflow-hidden gradient-bg-animate">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-white/5 to-background" />
 
       <div className="container mx-auto px-4 relative z-10">
@@ -80,7 +80,7 @@ export default function EducationSection() {
                 {/* Timeline dot */}
                 <div className="absolute left-8 md:left-auto md:right-[-8px] top-6 w-4 h-4 rounded-full bg-foreground glow-white" />
 
-                <div className="glass rounded-xl p-6 hover:glow-white transition-all duration-300">
+                <div className="glass-premium rounded-xl p-6 glass-card-hover shimmer pulse-glow">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="p-3 rounded-lg bg-white/10">
                       <GraduationCap className="h-6 w-6 text-foreground" />
@@ -124,7 +124,7 @@ export default function EducationSection() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
-                className="glass rounded-xl p-6 hover:glow-white transition-all duration-300 cursor-pointer"
+                className="glass-premium rounded-xl p-6 glass-card-hover shimmer pulse-glow cursor-pointer"
               >
                 <div className="text-4xl mb-3 grayscale">{cert.icon}</div>
                 <h4 className="text-xl font-bold text-foreground mb-2">{cert.title}</h4>

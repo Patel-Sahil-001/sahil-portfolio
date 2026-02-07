@@ -62,7 +62,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden">
+    <section id="contact" className="py-20 relative overflow-hidden gradient-bg-animate">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-white/5 to-background" />
 
       {/* Animated particles */}
@@ -115,7 +115,7 @@ export default function ContactSection() {
               transition={{ duration: 0.6 }}
               className="space-y-6"
             >
-              <div className="glass rounded-2xl p-8 glow-white border border-white/20 hover:border-white/50 transition-all duration-300 shadow-xl shadow-white/5">
+              <div className="glass-premium rounded-2xl p-8 glass-card-hover shimmer pulse-glow border border-white/20 hover:border-white/50 shadow-xl shadow-white/5">
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-2xl font-bold text-foreground" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
                     Contact Information
@@ -191,7 +191,7 @@ export default function ContactSection() {
               transition={{ duration: 0.6 }}
               className="flex items-center justify-center"
             >
-              <div className="glass rounded-2xl p-8 w-full glow-white transition-all duration-300 border border-white/20 hover:border-white/50 shadow-xl shadow-white/5">
+              <div className="glass-premium rounded-2xl p-8 w-full glass-card-hover shimmer pulse-glow transition-all duration-300 border border-white/20 hover:border-white/50 shadow-xl shadow-white/5">
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-2xl font-bold text-foreground" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
                     Send me a Message

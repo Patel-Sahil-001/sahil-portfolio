@@ -31,7 +31,7 @@ export default function ProjectsSection() {
   }, []);
 
   return (
-    <section id="projects" className="py-20 relative overflow-hidden">
+    <section id="projects" className="py-20 relative overflow-hidden gradient-bg-animate">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-white/5 to-background" />
 
       {/* Animated particles */}
@@ -83,7 +83,7 @@ export default function ProjectsSection() {
               whileHover={{ scale: 1.05 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="glass rounded-2xl overflow-hidden group hover:glow-white transition-all duration-300 border border-white/20 hover:border-white/50"
+              className="glass-premium rounded-2xl overflow-hidden group glass-card-hover shimmer pulse-glow border border-white/20 hover:border-white/50"
             >
               <div className="grid md:grid-cols-2 gap-6 p-8">
                 {/* Project Image */}
@@ -175,7 +175,7 @@ export default function ProjectsSection() {
           transition={{ delay: 0.3 }}
           className="text-center mt-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-3 rounded-lg bg-white/10 border border-white/30">
+          <div className="inline-flex items-center gap-2 px-4 py-3 rounded-lg glass-premium pulse-glow shimmer border border-white/30">
             <Code2 className="h-5 w-5 text-primary" />
             <p className="text-foreground font-medium">More projects coming soon...</p>
           </div>
