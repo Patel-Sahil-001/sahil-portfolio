@@ -6,10 +6,12 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 
 **A stunning, modern portfolio showcasing cutting-edge web development**
 
-[🚀 Live Demo](#) • [📖 Documentation](#) • [🐛 Report Bug](#) • [✨ Request Feature](#)
+[🚀 Live Demo](http://patel-sahil.vercel.app/) • [📖 Documentation](#) • [🐛 Report Bug](https://github.com/Patel-Sahil-001/sahil-portfolio/issues) • [✨ Request Feature](https://github.com/Patel-Sahil-001/sahil-portfolio/issues)
 
 </div>
 
@@ -17,7 +19,10 @@
 
 ## 🎯 About This Project
 
-Experience a **premium, neon-themed developer portfolio** that brings your projects to life with stunning animations, interactive effects, and a sleek modern design. Built with performance and user experience at its core, this portfolio demonstrates advanced React patterns and design principles.
+Experience a **premium, neon-themed developer portfolio** that brings projects to life with stunning animations, interactive effects, and a sleek modern design. Built with performance and user experience at its core, this portfolio demonstrates advanced React patterns and design principles.
+
+**About Me:**
+I am **Sahil Patel**, a Web Developer specializing in the **MERN Stack** (MongoDB, Express.js, React, Node.js). Currently pursuing a **B.Tech in Computer Science and Engineering** at Parul University, I focus on building scalable, full-stack web applications with modern technologies and best practices.
 
 ### ⚡ Key Highlights
 
@@ -42,6 +47,18 @@ This portfolio leverages cutting-edge technologies:
 | **Tailwind CSS** | Utility-first styling framework |
 | **shadcn-ui** | Beautiful, accessible component library |
 | **Framer Motion** | Smooth, professional animations |
+| **Node.js & Express** | Backend runtime and framework (MERN) |
+| **MongoDB** | NoSQL Database |
+
+---
+
+## 🚀 Featured Projects
+
+### StockFlow ERP
+**Description:** A comprehensive enterprise resource planning system designed to streamline inventory management, order processing, and supply chain operations.
+- **Tech:** Python, Java, React, Database Management
+- **Key Features:** Real-time inventory tracking, Order management, Analytics dashboard.
+- [View Live](https://stockflow-erp.vercel.app) | [GitHub](https://github.com/Patel-Sahil-001/StockFlow-ERP-Project)
 
 ---
 
@@ -57,7 +74,7 @@ Ensure you have **Node.js** installed (v16 or higher) - [Install with nvm](https
 
 ```bash
 # 1️⃣ Clone this repository
-git clone <YOUR_GIT_URL>
+git clone https://github.com/Patel-Sahil-001/sahil-portfolio.git
 
 # 2️⃣ Navigate to project directory
 cd sahil-portfolio
@@ -147,25 +164,14 @@ Make it yours! Key areas to customize:
 
 ---
 
-## 🔗 Custom Domain
-
-Yes! Connect your custom domain easily:
-
-1. Purchase a domain from your preferred registrar
-2. Add domain in your hosting platform (Vercel/Netlify)
-3. Update DNS records as instructed
-4. Enable HTTPS (automatic on most platforms)
-
----
-
 ## 📫 Contact & Support
 
 Have questions or suggestions? Reach out!
 
-- 💼 **Portfolio**: [Your Portfolio URL]
-- 📧 **Email**: [Your Email]
-- 🐦 **Twitter**: [@YourHandle]
-- 💻 **GitHub**: [@YourGitHub]
+- 📧 **Email**: [99sahil9426@gmail.com](mailto:99sahil9426@gmail.com)
+- 💼 **LinkedIn**: [patel-sahil9124](https://www.linkedin.com/in/patel-sahil9124/)
+- 💻 **GitHub**: [Patel-Sahil-001](https://github.com/Patel-Sahil-001)
+- 🌐 **Portfolio**: [patel-sahil.vercel.app](http://patel-sahil.vercel.app/)
 
 ---
 
