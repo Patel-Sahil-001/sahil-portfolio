@@ -82,8 +82,8 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent",
-        scrolled ? "bg-background/80 backdrop-blur-md border-white/10 shadow-lg" : "bg-transparent"
+        "fixed top-0 w-full z-[100] transition-all duration-300 border-b border-transparent",
+        scrolled ? "bg-background/95 backdrop-blur-sm border-white/10 shadow-lg" : "bg-transparent"
       )}
     >
       <div className="container mx-auto px-4">

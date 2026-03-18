@@ -168,6 +168,7 @@
   .glass-card-hover {
     @apply transition-all duration-500 ease-out;
     background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    will-change: transform, box-shadow;
   }
 
   .glass-card-hover:hover {
@@ -280,5 +281,43 @@
 
   ::-webkit-scrollbar-thumb:hover {
     background: #555555;
+  }
+
+  /* ========================================================================= */
+  /* PERFORMANCE OPTIMIZATIONS */
+  /* ========================================================================= */
+  
+  /* Disable heavy animations on mobile for better scrolling performance */
+  @media (max-width: 768px) {
+    .shimmer::before {
+      animation: none !important;
+      background: rgba(255, 255, 255, 0.05); /* Static alternative */
+    }
+    
+    .pulse-glow {
+      animation: none !important;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    .gradient-bg-animate {
+      animation: none !important; /* Stop background-position shifting */
+      background-size: 200% 200%; /* Less memory usage */
+    }
+
+    .float-animation {
+      animation: none !important;
+      transform: none !important;
+    }
+  }
+
+  /* Respect OS 'reduce motion' preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-play-state: paused !important;
+      transition: none !important;
+    }
+    html {
+      scroll-behavior: auto !important;
+    }
   }
 }

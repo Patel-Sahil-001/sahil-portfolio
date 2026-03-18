@@ -50,7 +50,7 @@ const StickyCard = ({ i, title, org, date, tags, src, mockGradient, progress, ra
           scale,
           top: `calc(-5vh + ${i * 25}px)`
         }}
-        className="relative flex flex-col w-[350px] md:w-[600px] h-[450px] md:h-[500px] rounded-[25px] overflow-hidden bg-[#18181b] border border-white/10 shadow-2xl origin-top"
+        className="relative flex flex-col w-[90vw] sm:w-[350px] md:w-[600px] max-w-full h-[400px] sm:h-[450px] md:h-[500px] rounded-[25px] overflow-hidden bg-[#18181b] border border-white/10 shadow-2xl origin-top"
       >
         {/* Top: Image/Visual Area */}
         <div className="h-[60%] w-full relative overflow-hidden" style={{ background: mockGradient }}>

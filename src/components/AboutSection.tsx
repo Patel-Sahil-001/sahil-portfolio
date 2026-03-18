@@ -101,7 +101,7 @@ export default function AboutSection() {
             className="space-y-4 order-2 md:order-1"
           >
             {/* Who I Am Card */}
-            <div className="glass-premium rounded-xl p-4 glass-card-hover shimmer pulse-glow group">
+            <div className="glass-premium rounded-xl p-3 sm:p-4 glass-card-hover shimmer pulse-glow group">
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
                   <svg className="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -125,7 +125,7 @@ export default function AboutSection() {
             </div>
 
             {/* Education Card */}
-            <div className="glass-premium rounded-xl p-4 glass-card-hover shimmer pulse-glow group">
+            <div className="glass-premium rounded-xl p-3 sm:p-4 glass-card-hover shimmer pulse-glow group">
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
                   <svg className="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -151,7 +151,7 @@ export default function AboutSection() {
             </div>
 
             {/* Career Objective Card */}
-            <div className="glass-premium rounded-xl p-4 glass-card-hover shimmer pulse-glow group">
+            <div className="glass-premium rounded-xl p-3 sm:p-4 glass-card-hover shimmer pulse-glow group">
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
                   <svg className="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -206,13 +206,12 @@ export default function AboutSection() {
               transition={{ duration: 0.3 }}
               className="relative group float-animation"
             >
-              <div className="absolute inset-0 bg-white/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500" />
+              <div className="absolute -inset-4 rounded-[3rem] opacity-50 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15)_0%,transparent_70%)] group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative glass-premium rounded-3xl p-3 overflow-hidden border-2 border-white/30 group-hover:border-white/50 transition-all duration-500 shimmer">
                 <img
                   src="/profile-photo.png"
                   alt="Sahil Patel"
-                  className="w-full h-auto rounded-2xl object-cover"
-                  style={{ maxWidth: '350px' }}
+                  className="w-full max-w-[250px] sm:max-w-[350px] mx-auto h-auto rounded-2xl object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl" />
               </div>

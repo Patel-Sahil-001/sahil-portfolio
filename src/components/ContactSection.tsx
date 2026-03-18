@@ -5,20 +5,24 @@ import { Textarea } from './ui/textarea';
 import { useState, useMemo } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import AnimatedButton from './ui/animated-button';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [inquiryType, setInquiryType] = useState('');
 
+  const isMobile = useIsMobile();
+
   const particles = useMemo(() => {
-    return [...Array(20)].map(() => ({
+    const count = isMobile ? 8 : 20;
+    return [...Array(count)].map(() => ({
       left: Math.random() * 100,
       top: Math.random() * 100,
       duration: 3 + Math.random() * 2,
       delay: Math.random() * 2,
     }));
-  }, []);
+  }, [isMobile]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

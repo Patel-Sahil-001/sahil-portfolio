@@ -1,0 +1,45 @@
+﻿node.exe : [31mfailed to load config 
+from C:\Users\99sah\Documents\GitHub\sah
+il-portfolio\vite.config.ts[39m
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" 
+"C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecif 
+   ied: ([31mfailed to ....config.ts  
+  [39m:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCom 
+   mandError
+ 
+[31merror when starting dev server:
+Error [ERR_PACKAGE_PATH_NOT_EXPORTED]: 
+Package subpath './internal' is not 
+defined by "exports" in C:\Users\99sah\D
+ocuments\GitHub\sahil-portfolio\node_mod
+ules\vite\package.json imported from C:\
+Users\99sah\Documents\GitHub\sahil-portf
+olio\node_modules\@vitejs\plugin-react\d
+ist\index.js
+    at exportsNotFound (node:internal/mo
+dules/esm/resolve:313:10)
+    at packageExportsResolve (node:inter
+nal/modules/esm/resolve:661:9)
+    at packageResolve (node:internal/mod
+ules/esm/resolve:774:12)
+    at moduleResolve (node:internal/modu
+les/esm/resolve:858:18)
+    at defaultResolve (node:internal/mod
+ules/esm/resolve:990:11)
+    at #cachedDefaultResolve (node:inter
+nal/modules/esm/loader:718:20)
+    at 
+#resolveAndMaybeBlockOnLoaderThread (nod
+e:internal/modules/esm/loader:735:38)
+    at ModuleLoader.resolveSync (node:in
+ternal/modules/esm/loader:764:52)
+    at #resolve (node:internal/modules/e
+sm/loader:700:17)
+    at 
+ModuleLoader.getOrCreateModuleJob (node:
+internal/modules/esm/loader:620:35)[39m

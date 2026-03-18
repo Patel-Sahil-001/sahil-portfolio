@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 // @ts-ignore
 import { Renderer, Triangle, Program, Mesh } from 'ogl';
+import { useIsMobile } from '@/hooks/use-mobile';
 import './Prism.css';
 
 interface PrismProps {
@@ -40,6 +41,8 @@ const Prism: React.FC<PrismProps> = ({
 }) => {
     const containerRef = useRef<HTMLDivElement>(null);
 
+    const isMobile = useIsMobile();
+
     useEffect(() => {
         const container = containerRef.current;
         if (!container) return;
@@ -63,7 +66,7 @@ const Prism: React.FC<PrismProps> = ({
         const HOVSTR = Math.max(0, hoverStrength || 1);
         const INERT = Math.max(0, Math.min(1, inertia || 0.12));
 
-        const dpr = Math.min(2, window.devicePixelRatio || 1);
+        const dpr = 1; // Hard lock DPR to 1 for massive performance gain over full screen
         const renderer = new Renderer({
             dpr,
             alpha: transparent,
@@ -177,7 +180,7 @@ const Prism: React.FC<PrismProps> = ({
           wob = mat2(c0, c1, c2, c0);
         }
 
-        const int STEPS = 100;
+        const int STEPS = ${isMobile ? 30 : 60};
         for (int i = 0; i < STEPS; i++) {
           p = vec3(f, z);
           p.xz = p.xz * wob;

@@ -78,9 +78,9 @@ export default function EducationSection() {
                 className={`relative mb-12 ${index % 2 === 0 ? 'md:pr-1/2' : 'md:pl-1/2 md:ml-auto'} md:w-1/2 pl-20 md:pl-0`}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-8 md:left-auto md:right-[-8px] top-6 w-4 h-4 rounded-full bg-foreground glow-white" />
+                <div className="absolute left-[25px] md:left-auto md:right-[-8px] top-6 w-4 h-4 rounded-full bg-foreground glow-white" />
 
-                <div className="glass-premium rounded-xl p-6 glass-card-hover shimmer pulse-glow">
+                <div className="glass-premium rounded-xl p-4 sm:p-6 glass-card-hover shimmer pulse-glow">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="p-3 rounded-lg bg-white/10">
                       <GraduationCap className="h-6 w-6 text-foreground" />
@@ -124,7 +124,7 @@ export default function EducationSection() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
-                className="glass-premium rounded-xl p-6 glass-card-hover shimmer pulse-glow cursor-pointer"
+                className="glass-premium rounded-xl p-4 sm:p-6 glass-card-hover shimmer pulse-glow cursor-pointer"
               >
                 <div className="text-4xl mb-3 grayscale">{cert.icon}</div>
                 <h4 className="text-xl font-bold text-foreground mb-2">{cert.title}</h4>

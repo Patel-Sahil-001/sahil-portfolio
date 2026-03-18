@@ -1,6 +1,7 @@
 import { useEffect, useRef, useMemo } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 import './ScrollReveal.css';
 
@@ -19,6 +20,9 @@ const ScrollReveal = ({
     wordAnimationEnd = 'bottom bottom'
 }) => {
     const containerRef = useRef(null);
+    const isMobile = useIsMobile();
+    // Completely disable blur for max scroll performance (GSAP filter:blur is a known layout killer)
+    const effectiveBlur = false; 
 
     const splitText = useMemo(() => {
         const text = typeof children === 'string' ? children : '';
@@ -84,7 +88,7 @@ const ScrollReveal = ({
         );
 
         // Optimize blur animation - this is the most expensive operation
-        if (enableBlur) {
+        if (effectiveBlur) {
             gsap.fromTo(
                 wordElements,
                 { filter: `blur(${blurStrength}px)`, willChange: 'filter' },

@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Code2 } from 'lucide-react';
 import AnimatedButton from './ui/animated-button';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const projects = [
   {
@@ -17,18 +18,36 @@ const projects = [
     liveLink: 'https://stockflow-erp.vercel.app',
     githubLink: 'https://github.com/Patel-Sahil-001/StockFlow-ERP-Project',
     image: '/StockFlow-project.png'
+  },
+  {
+    title: 'PromptForge Verse',
+    description: 'An advanced AI prompt engineering laboratory designed to bridge the gap between simple ideas and complex AI model inputs. It empowers users to craft highly optimised, model-ready prompts and reverse-engineer images into detailed text instructions, all powered by a robust, multi-provider AI backend within a visually stunning interface.',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Firebase', 'Framer Motion', 'Zustand'],
+    highlights: [
+      'AI Prompt Enhancer',
+      'Image Alchemy',
+      'Intelligent Fallback System',
+      'Automated Credit & Auth System',
+      'Immersive UI/UX'
+    ],
+    liveLink: 'https://promptforge-verse.vercel.app/',
+    githubLink: 'https://github.com/Patel-Sahil-001/promptforge-verse',
+    image: '/Promptforge-verse-project.png'
   }
 ];
 
 export default function ProjectsSection() {
+  const isMobile = useIsMobile();
+
   const particles = useMemo(() => {
-    return [...Array(20)].map(() => ({
+    const count = isMobile ? 8 : 20;
+    return [...Array(count)].map(() => ({
       left: Math.random() * 100,
       top: Math.random() * 100,
       duration: 3 + Math.random() * 2,
       delay: Math.random() * 2,
     }));
-  }, []);
+  }, [isMobile]);
 
   return (
     <section id="projects" className="py-20 relative overflow-hidden gradient-bg-animate">
@@ -74,22 +93,22 @@ export default function ProjectsSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-1 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-1 gap-8 max-w-6xl mx-auto">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.05 }}
+              whileHover={isMobile ? {} : { scale: 1.05 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               className="glass-premium rounded-2xl overflow-hidden group glass-card-hover shimmer pulse-glow border border-white/20 hover:border-white/50"
             >
-              <div className="grid md:grid-cols-2 gap-6 p-8">
+              <div className="grid md:grid-cols-2 gap-6 p-4 sm:p-8">
                 {/* Project Image */}
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="relative h-64 md:h-full rounded-xl overflow-hidden"
+                  whileHover={isMobile ? {} : { scale: 1.05 }}
+                  className="relative h-56 sm:h-64 md:h-full rounded-xl overflow-hidden"
                 >
                   <img
                     src={project.image}
