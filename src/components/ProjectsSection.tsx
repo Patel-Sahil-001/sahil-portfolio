@@ -82,9 +82,9 @@ export default function ProjectsSection() {
 
       {/* Content Layer */}
       <div className="relative z-10 container mx-auto px-4 mt-[-10vh]">
-        <div className="bg-background/90 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl">
+        <div className="bg-background/90 backdrop-blur-xl border border-white/10 rounded-3xl p-4 sm:p-10 shadow-2xl">
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto place-content-center justify-center">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -96,7 +96,7 @@ export default function ProjectsSection() {
               className="bg-card text-card-foreground rounded-[2rem] overflow-hidden flex flex-col shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300"
             >
               {/* Project Image */}
-              <div className="w-full h-56 relative overflow-hidden p-3 pb-0">
+              <div className="w-full h-48 sm:h-56 relative overflow-hidden p-3 pb-0">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -105,7 +105,7 @@ export default function ProjectsSection() {
               </div>
 
               {/* Project Details */}
-              <div className="flex flex-col flex-grow p-6 sm:p-8">
+              <div className="flex flex-col flex-grow p-5 sm:p-8">
                 <h3 className="text-2xl font-bold mb-3 text-center" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
                   {project.title}
                 </h3>

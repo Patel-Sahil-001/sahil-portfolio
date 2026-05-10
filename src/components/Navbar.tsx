@@ -12,6 +12,7 @@ const navLinks = [
   { label: 'Interests', href: '#interests', id: 'interests' },
   { label: 'Certificates', href: '#certificates', id: 'certificates' },
   { label: 'Projects', href: '#projects', id: 'projects' },
+  { label: 'Contact', href: '#contact', id: 'contact' },
 ];
 
 export default function Navbar() {
@@ -81,40 +82,34 @@ export default function Navbar() {
 
   return (
     <nav
-      className={cn(
-        "fixed top-0 w-full z-[100] transition-all duration-300 border-b border-transparent",
-        scrolled ? "bg-background/95 backdrop-blur-sm border-white/10 shadow-lg" : "bg-transparent"
-      )}
+      className="fixed top-0 w-full z-[100] transition-all duration-300 pointer-events-none pt-4"
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo/Brand Removed as per request */}
-          <div />
-
+        <div className="flex items-center justify-end lg:justify-center h-24">
           {/* Desktop Navigation */}
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="hidden lg:flex items-center gap-1"
+            className="hidden lg:flex items-center gap-2 p-1.5 rounded-full liquid-glass-nav pointer-events-auto"
           >
-            <div className="flex items-center p-1 rounded-full bg-background/20 backdrop-blur-sm border border-white/5">
+            <div className="flex items-center gap-1 px-2">
               {navLinks.map((link) => (
                 <a
                   key={link.id}
                   href={link.href}
                   onClick={(e) => handleNavClick(link.id, e)}
                   className={cn(
-                    "relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
+                    "relative px-5 py-2.5 rounded-full text-[14px] font-semibold tracking-wide transition-all duration-300",
                     activeSection === link.id
-                      ? "text-primary-foreground"
-                      : "text-muted-foreground hover:text-foreground"
+                      ? "text-black"
+                      : "text-white/60 hover:text-white hover:glow-text-white"
                   )}
                 >
                   {activeSection === link.id && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute inset-0 bg-primary rounded-full glow-white"
+                      className="liquid-active-pill"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}
@@ -124,17 +119,8 @@ export default function Navbar() {
             </div>
           </motion.div>
 
-          <div className="hidden lg:flex items-center gap-4">
-            <AnimatedButton
-              onClick={(e) => handleNavClick('contact', e)}
-              className="text-sm font-semibold"
-            >
-              Get in Touch
-            </AnimatedButton>
-          </div>
-
           {/* Mobile Controls */}
-          <div className="flex lg:hidden items-center gap-4">
+          <div className="flex lg:hidden items-center gap-4 pointer-events-auto">
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsOpen(!isOpen)}
@@ -155,7 +141,7 @@ export default function Navbar() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden overflow-hidden bg-background/95 backdrop-blur-xl border-t border-white/10"
+              className="lg:hidden overflow-hidden bg-[#0a0a0a]/90 backdrop-blur-xl border border-white/10 rounded-2xl mx-4 mt-2 pointer-events-auto shadow-2xl"
             >
               <div className="px-4 py-6 space-y-2">
                 {navLinks.map((link) => (
@@ -175,16 +161,6 @@ export default function Navbar() {
                     {link.label}
                   </motion.a>
                 ))}
-                <div className="pt-4">
-                  <AnimatedButton
-                    onClick={(e) => {
-                      handleNavClick('contact', e);
-                    }}
-                    className="w-full text-base font-semibold"
-                  >
-                    Get in Touch
-                  </AnimatedButton>
-                </div>
               </div>
             </motion.div>
           )}

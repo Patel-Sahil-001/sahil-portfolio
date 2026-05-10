@@ -66,6 +66,54 @@
     @apply bg-white/5 backdrop-blur-md border border-white/10;
   }
 
+  .liquid-glass-nav {
+    @apply bg-[#050505]/50 backdrop-blur-[30px] border border-white/[0.08] shadow-2xl relative overflow-hidden;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15), inset 0 -1px 1px rgba(0,0,0,0.5);
+  }
+  
+  .liquid-glass-nav::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      125deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.01) 40%,
+      transparent 100%
+    );
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .liquid-glass-nav::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transform: skewX(-25deg);
+    animation: liquidShine 7s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  @keyframes liquidShine {
+    0% { left: -150%; }
+    15% { left: 200%; }
+    100% { left: 200%; }
+  }
+
+  .liquid-active-pill {
+    @apply absolute inset-0 bg-white rounded-full shadow-lg;
+    box-shadow: 0 0 20px rgba(255,255,255,0.4), inset 0 -2px 4px rgba(0,0,0,0.1), inset 0 2px 4px rgba(255,255,255,0.9);
+  }
+
   .glass-card {
     @apply bg-card/60 backdrop-blur-md border border-white/10 shadow-none;
   }
