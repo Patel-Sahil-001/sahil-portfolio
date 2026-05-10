@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import SectionTitle from './SectionTitle';
 import { Instagram, Github, Linkedin, Eye } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 import { AnimatedDock } from './ui/animated-dock';
@@ -74,24 +75,16 @@ export default function AboutSection() {
   };
 
   return (
-    <section id="about" className="py-12 relative overflow-hidden gradient-bg-animate">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-white/5 to-background" />
+    <section id="about" className="relative gradient-bg-animate text-white pb-[10vh]">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none z-0" />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-10"
-        >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-3 glow-text-white tracking-widest uppercase" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
-            About Me
-          </h2>
-          <div className="w-24 h-1 bg-white/20 mx-auto rounded-full" />
-        </motion.div>
+      {/* Sticky Background Title */}
+      <SectionTitle title="ABOUT ME" />
 
-        <div className="grid md:grid-cols-2 gap-8 items-start max-w-6xl mx-auto">
+      {/* Content Layer */}
+      <div className="relative z-10 container mx-auto px-4 mt-[-10vh]">
+        <div className="bg-background/90 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl">
+          <div className="grid md:grid-cols-2 gap-8 items-start max-w-6xl mx-auto">
           {/* Left Side - About Text and Resume Buttons */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -227,6 +220,7 @@ export default function AboutSection() {
               }))}
             />
           </motion.div>
+          </div>
         </div>
       </div>
     </section>

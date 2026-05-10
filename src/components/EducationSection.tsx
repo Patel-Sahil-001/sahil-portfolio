@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { GraduationCap, Calendar } from 'lucide-react';
+import SectionTitle from './SectionTitle';
 
 const educationData = [
   {
@@ -45,25 +46,17 @@ const certifications = [
 
 export default function EducationSection() {
   return (
-    <section id="education" className="py-20 relative overflow-hidden gradient-bg-animate">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-white/5 to-background" />
+    <section id="education" className="relative gradient-bg-animate text-white pb-[10vh]">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none z-0" />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 glow-text-white tracking-widest uppercase" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
-            Education & Certifications
-          </h2>
-          <div className="w-24 h-1 bg-white/20 mx-auto rounded-full" />
-        </motion.div>
+      {/* Sticky Background Title */}
+      <SectionTitle title="EDUCATION" />
 
-        {/* Education Timeline */}
-        <div className="max-w-4xl mx-auto mb-16">
+      {/* Content Layer */}
+      <div className="relative z-10 container mx-auto px-4 mt-[-10vh]">
+        <div className="bg-background/90 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl">
+          {/* Education Timeline */}
+          <div className="max-w-4xl mx-auto mb-16">
           <div className="relative">
             {/* Vertical line */}
             <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-white/20" />
@@ -133,7 +126,8 @@ export default function EducationSection() {
               </motion.div>
             ))}
           </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

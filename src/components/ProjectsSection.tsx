@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Github, Code2 } from 'lucide-react';
 import AnimatedButton from './ui/animated-button';
 import { useIsMobile } from '@/hooks/use-mobile';
+import SectionTitle from './SectionTitle';
 
 const projects = [
   {
@@ -50,11 +51,11 @@ export default function ProjectsSection() {
   }, [isMobile]);
 
   return (
-    <section id="projects" className="py-20 relative overflow-hidden gradient-bg-animate">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-white/5 to-background" />
+    <section id="projects" className="relative gradient-bg-animate text-white pb-[10vh]">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none z-0" />
 
       {/* Animated particles */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
         {particles.map((particle, i) => (
           <motion.div
             key={i}
@@ -76,110 +77,75 @@ export default function ProjectsSection() {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 glow-text-white tracking-widest uppercase" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
-            Featured Projects
-          </h2>
-          <div className="w-24 h-1 bg-white/20 mx-auto rounded-full" />
-          <p className="text-muted-foreground mt-4 text-base sm:text-lg">
-            Showcasing my best work and creative solutions
-          </p>
-        </motion.div>
+      {/* Sticky Background Title */}
+      <SectionTitle title="PROJECTS" />
 
-        <div className="grid md:grid-cols-1 gap-8 max-w-6xl mx-auto">
+      {/* Content Layer */}
+      <div className="relative z-10 container mx-auto px-4 mt-[-10vh]">
+        <div className="bg-background/90 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl">
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={isMobile ? {} : { scale: 1.05 }}
+              whileHover={isMobile ? {} : { y: -10 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="glass-premium rounded-2xl overflow-hidden group glass-card-hover shimmer pulse-glow border border-white/20 hover:border-white/50"
+              className="bg-card text-card-foreground rounded-[2rem] overflow-hidden flex flex-col shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300"
             >
-              <div className="grid md:grid-cols-2 gap-6 p-4 sm:p-8">
-                {/* Project Image */}
-                <motion.div
-                  whileHover={isMobile ? {} : { scale: 1.05 }}
-                  className="relative h-56 sm:h-64 md:h-full rounded-xl overflow-hidden"
-                >
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </motion.div>
+              {/* Project Image */}
+              <div className="w-full h-56 relative overflow-hidden p-3 pb-0">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover rounded-t-2xl rounded-b-sm"
+                />
+              </div>
 
-                {/* Project Details */}
-                <div className="flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-3xl font-bold text-foreground mb-3" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
-                      {project.title}
-                    </h3>
-                    <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-                      {project.description}
-                    </p>
+              {/* Project Details */}
+              <div className="flex flex-col flex-grow p-6 sm:p-8">
+                <h3 className="text-2xl font-bold mb-3 text-center" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                  {project.title}
+                </h3>
+                
+                <p className="text-muted-foreground text-sm mb-8 flex-grow leading-relaxed text-center">
+                  {project.description}
+                </p>
 
-                    {/* Highlights */}
-                    <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
-                        Key Features
-                      </h4>
-                      <ul className="space-y-2">
-                        {project.highlights.map((highlight) => (
-                          <li key={highlight} className="flex items-center gap-2 text-foreground">
-                            <div className="w-2 h-2 rounded-full bg-primary" />
-                            {highlight}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Technologies */}
-                    <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-3">
-                        Technologies
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-primary border border-white/20"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex gap-3">
-                    <AnimatedButton
-                      onClick={() => window.open(project.liveLink)}
-                      className="flex-1 font-semibold"
+                {/* Technologies */}
+                <div className="flex flex-wrap justify-center gap-2 mb-8">
+                  {project.technologies.slice(0, 3).map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-4 py-1.5 rounded-full text-[11px] font-bold bg-foreground text-background tracking-wide"
                     >
-                      <ExternalLink className="mr-2 h-4 w-4 inline" />
-                      View Live
-                    </AnimatedButton>
-                    <AnimatedButton
-                      onClick={() => window.open(project.githubLink)}
-                      variant="outline"
-                      className="flex-1"
-                    >
-                      <Github className="mr-2 h-4 w-4 inline" />
-                      Code
-                    </AnimatedButton>
-                  </div>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex justify-center gap-4 mt-auto">
+                  <AnimatedButton
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="outline"
+                    className="rounded-full text-sm font-semibold px-8"
+                  >
+                    GitHub
+                  </AnimatedButton>
+                  <AnimatedButton
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="outline"
+                    className="rounded-full text-sm font-semibold px-8"
+                  >
+                    Live Demo
+                  </AnimatedButton>
                 </div>
               </div>
             </motion.div>
@@ -199,6 +165,7 @@ export default function ProjectsSection() {
             <p className="text-foreground font-medium">More projects coming soon...</p>
           </div>
         </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,32 +1,22 @@
 import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
+import SectionTitle from './SectionTitle';
 
 import { skillCategories } from '@/lib/skills';
 
 export default function SkillsSection() {
   const isMobile = useIsMobile();
   return (
-    <section id="skills" className="py-20 relative overflow-hidden gradient-bg-animate">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-white/5 to-background" />
+    <section id="skills" className="relative gradient-bg-animate text-white pb-[10vh]">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none z-0" />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 glow-text-white tracking-widest uppercase" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
-            Technical Skills
-          </h2>
-          <div className="w-24 h-1 bg-white/20 mx-auto rounded-full" />
-          <p className="text-muted-foreground mt-4 text-base sm:text-lg">
-            Technologies and tools I work with
-          </p>
-        </motion.div>
+      {/* Sticky Background Title */}
+      <SectionTitle title="TECHNICAL SKILLS" />
 
-        <div className="grid md:grid-cols-2 gap-8">
+      {/* Content Layer */}
+      <div className="relative z-10 container mx-auto px-4 mt-[-10vh]">
+        <div className="bg-background/90 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl">
+          <div className="grid md:grid-cols-2 gap-8">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.category}
@@ -83,7 +73,8 @@ export default function SkillsSection() {
               {tech}
             </motion.div>
           ))}
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

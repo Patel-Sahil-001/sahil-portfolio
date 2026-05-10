@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react';
 import { useScroll, useTransform, motion, MotionValue } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import AnimatedButton from './ui/animated-button';
+import SectionTitle from './SectionTitle';
 
 const certificates = [
   {
@@ -111,12 +112,7 @@ export default function CertificatesSection() {
   return (
     <section id="certificates" ref={container} className="relative bg-[#0a0a0f] text-white">
       {/* Intro Heading */}
-      <div className="h-[50vh] flex flex-col items-center justify-center sticky top-0 z-0">
-        <h2 className="text-6xl md:text-8xl font-bold tracking-widest glow-text-white" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
-          CERTIFICATIONS
-        </h2>
-        <p className="mt-4 text-white/40 tracking-[0.2em] text-sm uppercase">Scroll to explore</p>
-      </div>
+      <SectionTitle title="CERTIFICATIONS" subtitle="Scroll to explore" />
 
       <div className="relative pb-[20vh]">
         {certificates.map((cert, i) => {
