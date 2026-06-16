@@ -1,4 +1,4 @@
-# ✨ Sahil's Neon Dev Portfolio
+# ✨ Sahil's Portfolio
 
 <div align="center">
 
