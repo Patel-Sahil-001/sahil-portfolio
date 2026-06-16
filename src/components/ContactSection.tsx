@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Mail, Linkedin, MapPin, Send, CheckCircle, ChevronDown, Loader2 } from 'lucide-react';
 import SectionTitle from './SectionTitle';
 
-// TODO: Replace with your Web3Forms access key from https://web3forms.com
 const WEB3FORMS_ACCESS_KEY = '5a9c6fc2-8769-42f4-986b-b5fe9bd05b4b';
 
 export default function ContactSection() {
@@ -22,17 +21,34 @@ export default function ContactSection() {
     setLoading(true);
     setError('');
 
+    const inquiryEmoji: Record<string, string> = {
+      'Collaboration': '🤝',
+      'Job Opportunity': '💼',
+      'Freelance Project': '🚀',
+      'General': '💬',
+    };
+    const emoji = inquiryEmoji[formData.inquiryType] || '📩';
+
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
-          subject: `[${formData.inquiryType || 'General'}] Message from ${formData.name}`,
-          from_name: formData.name,
-          email: formData.email,
-          inquiry_type: formData.inquiryType,
-          message: formData.message,
+          subject: `${emoji} ${formData.inquiryType || 'New Inquiry'} — ${formData.name}`,
+          from_name: 'Sahil Portfolio ✦',
+          replyto: formData.email,
+          botcheck: '',
+          '👤 Full Name': formData.name,
+          '📧 Email Address': formData.email,
+          '📋 Inquiry Type': `${emoji} ${formData.inquiryType || 'General'}`,
+          '💬 Message': formData.message,
+          '🕐 Submitted At': new Date().toLocaleString('en-IN', {
+            dateStyle: 'full',
+            timeStyle: 'short',
+            timeZone: 'Asia/Kolkata',
+          }),
+          '🌐 Source': 'sahil-portfolio — Contact Form',
         }),
       });
 
