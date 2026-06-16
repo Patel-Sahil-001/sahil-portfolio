@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, MapPin, Send, CheckCircle, ChevronDown } from 'lucide-react';
+import { Mail, Linkedin, MapPin, Send, CheckCircle, ChevronDown, Loader2 } from 'lucide-react';
 import SectionTitle from './SectionTitle';
+
+// TODO: Replace with your Web3Forms access key from https://web3forms.com
+const WEB3FORMS_ACCESS_KEY = '5a9c6fc2-8769-42f4-986b-b5fe9bd05b4b';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -11,17 +14,42 @@ export default function ContactSection() {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Build mailto link with form data
-    const subject = encodeURIComponent(`[${formData.inquiryType || 'General'}] Message from ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nInquiry: ${formData.inquiryType}\n\n${formData.message}`
-    );
-    window.location.href = `mailto:99sahil9426@gmail.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `[${formData.inquiryType || 'General'}] Message from ${formData.name}`,
+          from_name: formData.name,
+          email: formData.email,
+          inquiry_type: formData.inquiryType,
+          message: formData.message,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', inquiryType: '', message: '' });
+        setTimeout(() => setSubmitted(false), 4000);
+      } else {
+        setError('Failed to send message. Please try again.');
+      }
+    } catch {
+      setError('Network error. Please check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -203,15 +231,31 @@ export default function ContactSection() {
                 />
               </div>
 
+              {/* Error Message */}
+              {error && (
+                <p className="text-red-400 text-xs text-center">{error}</p>
+              )}
+
               {/* Submit Button */}
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-3 sm:py-2.5 bg-foreground text-background text-sm font-bold rounded-lg flex items-center justify-center gap-2 hover:bg-white/90 transition-colors"
+                disabled={loading || submitted}
+                whileHover={!loading && !submitted ? { scale: 1.02 } : {}}
+                whileTap={!loading && !submitted ? { scale: 0.98 } : {}}
+                className={`w-full py-3 sm:py-2.5 text-sm font-bold rounded-lg flex items-center justify-center gap-2 transition-colors disabled:cursor-not-allowed ${
+                  submitted
+                    ? 'bg-emerald-500 text-white'
+                    : 'bg-foreground text-background hover:bg-white/90'
+                }`}
               >
-                <Send className="w-4 h-4" />
-                {submitted ? 'Message Sent!' : 'Send Message'}
+                {loading ? (
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                ) : submitted ? (
+                  <CheckCircle className="w-4 h-4" />
+                ) : (
+                  <Send className="w-4 h-4" />
+                )}
+                {loading ? 'Sending...' : submitted ? 'Message Sent!' : 'Send Message'}
               </motion.button>
             </form>
           </motion.div>
