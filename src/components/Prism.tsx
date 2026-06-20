@@ -180,7 +180,7 @@ const Prism: React.FC<PrismProps> = ({
           wob = mat2(c0, c1, c2, c0);
         }
 
-        const int STEPS = ${isMobile ? 30 : 60};
+        const int STEPS = ${isMobile ? 20 : 40};
         for (int i = 0; i < STEPS; i++) {
           p = vec3(f, z);
           p.xz = p.xz * wob;
@@ -247,7 +247,14 @@ const Prism: React.FC<PrismProps> = ({
         const resize = () => {
             const w = container.clientWidth || 1;
             const h = container.clientHeight || 1;
-            renderer.setSize(w, h);
+            
+            // Lower resolution for better performance
+            const downscale = isMobile ? 0.4 : 0.6;
+            renderer.setSize(w * downscale, h * downscale);
+            
+            // Ensure canvas visually fills the container
+            gl.canvas.style.width = '100%';
+            gl.canvas.style.height = '100%';
             iResBuf[0] = gl.drawingBufferWidth;
             iResBuf[1] = gl.drawingBufferHeight;
             offsetPxBuf[0] = offX * dpr;
