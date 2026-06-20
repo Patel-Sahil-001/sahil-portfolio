@@ -80,7 +80,7 @@ export default function ContactSection() {
         <div className="bg-background/90 backdrop-blur-xl border border-white/10 rounded-3xl p-4 sm:p-10 shadow-2xl">
 
         {/* Two-column layout */}
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
 
           {/* Left - Contact Information */}
           <motion.div

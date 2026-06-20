@@ -54,10 +54,10 @@ export default function SectionTitle({ title, subtitle }: SectionTitleProps) {
   return (
     <div
       ref={containerRef}
-      className="h-[35vh] sm:h-[50vh] flex flex-col items-center justify-center sticky top-0 z-0 overflow-hidden pointer-events-none"
+      className="h-[30vh] sm:h-[50vh] flex flex-col items-center justify-center sticky top-0 z-0 overflow-hidden pointer-events-none"
     >
       <motion.h2
-        className="text-4xl sm:text-7xl md:text-8xl lg:text-[10rem] font-black tracking-widest uppercase text-center px-4"
+        className="text-3xl sm:text-6xl md:text-8xl lg:text-[10rem] font-black tracking-widest uppercase text-center px-4"
         style={{
           fontFamily: 'Bebas Neue, sans-serif',
           color,

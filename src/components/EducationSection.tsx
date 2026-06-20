@@ -59,7 +59,7 @@ export default function EducationSection() {
           <div className="max-w-4xl mx-auto mb-16">
           <div className="relative">
             {/* Vertical line */}
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-white/20" />
+            <div className="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-white/20" />
 
             {educationData.map((edu, index) => (
               <motion.div
@@ -68,10 +68,10 @@ export default function EducationSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className={`relative mb-12 ${index % 2 === 0 ? 'md:pr-1/2' : 'md:pl-1/2 md:ml-auto'} md:w-1/2 pl-20 md:pl-0`}
+                className={`relative mb-12 ${index % 2 === 0 ? 'md:pr-1/2' : 'md:pl-1/2 md:ml-auto'} md:w-1/2 pl-14 sm:pl-20 md:pl-0`}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-[25px] md:left-auto md:right-[-8px] top-6 w-4 h-4 rounded-full bg-foreground glow-white" />
+                <div className="absolute left-[17px] sm:left-[25px] md:left-auto md:right-[-8px] top-6 w-4 h-4 rounded-full bg-foreground glow-white" />
 
                 <div className="glass-premium rounded-xl p-4 sm:p-6 glass-card-hover shimmer pulse-glow">
                   <div className="flex items-start gap-4 mb-4">
@@ -108,7 +108,7 @@ export default function EducationSection() {
             Professional Certifications
           </h3>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {certifications.map((cert, index) => (
               <motion.div
                 key={cert.title}

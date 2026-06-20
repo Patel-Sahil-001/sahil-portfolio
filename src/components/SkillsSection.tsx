@@ -16,7 +16,7 @@ export default function SkillsSection() {
       {/* Content Layer */}
       <div className="relative z-10 container mx-auto px-4 mt-[-10vh]">
         <div className="bg-background/90 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.category}
@@ -68,7 +68,7 @@ export default function SkillsSection() {
             <motion.div
               key={tech}
               whileHover={{ scale: 1.15, rotate: 5 }}
-              className="glass-premium px-6 py-3 rounded-full text-foreground font-semibold pulse-glow cursor-pointer hover:bg-white/20 shimmer"
+              className="glass-premium px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base text-foreground font-semibold pulse-glow cursor-pointer hover:bg-white/20 shimmer"
             >
               {tech}
             </motion.div>

@@ -84,7 +84,7 @@ export default function ProjectsSection() {
       <div className="relative z-10 container mx-auto px-4 mt-[-10vh]">
         <div className="bg-background/90 backdrop-blur-xl border border-white/10 rounded-3xl p-4 sm:p-10 shadow-2xl">
 
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto place-content-center justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto place-content-center justify-center">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -127,13 +127,13 @@ export default function ProjectsSection() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex justify-center gap-4 mt-auto">
+                <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mt-auto">
                   <AnimatedButton
                     href={project.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     variant="outline"
-                    className="rounded-full text-sm font-semibold px-8"
+                    className="rounded-full text-sm font-semibold px-5 sm:px-8"
                   >
                     GitHub
                   </AnimatedButton>
@@ -142,7 +142,7 @@ export default function ProjectsSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     variant="outline"
-                    className="rounded-full text-sm font-semibold px-8"
+                    className="rounded-full text-sm font-semibold px-5 sm:px-8"
                   >
                     Live Demo
                   </AnimatedButton>

@@ -66,7 +66,7 @@ export default function HeroSection() {
 
         {/* Staggered Title */}
         <motion.h1
-          className="text-5xl sm:text-7xl md:text-9xl lg:text-[10rem] font-bold text-white tracking-wide leading-none mb-4"
+          className="text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] font-bold text-white tracking-wide leading-none mb-4"
           style={{ fontFamily: "'Bebas Neue', sans-serif", textShadow: "0 0 30px rgba(255,255,255,0.1)" }}
           variants={letterContainer}
           initial="hidden"

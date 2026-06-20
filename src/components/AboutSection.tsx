@@ -84,7 +84,7 @@ export default function AboutSection() {
       {/* Content Layer */}
       <div className="relative z-10 container mx-auto px-4 mt-[-10vh]">
         <div className="bg-background/90 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl">
-          <div className="grid md:grid-cols-2 gap-8 items-start max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start max-w-6xl mx-auto">
           {/* Left Side - About Text and Resume Buttons */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
