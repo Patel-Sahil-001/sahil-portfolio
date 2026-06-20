@@ -54,7 +54,7 @@ const StickyCard = ({ i, title, org, date, tags, src, mockGradient, progress, ra
         className="relative flex flex-col w-[90vw] sm:w-[350px] md:w-[600px] max-w-full h-[400px] sm:h-[450px] md:h-[500px] rounded-[25px] overflow-hidden bg-[#18181b] border border-white/10 shadow-2xl origin-top"
       >
         {/* Top: Image/Visual Area */}
-        <div className="h-[60%] w-full relative overflow-hidden" style={{ background: mockGradient }}>
+        <div className="flex-1 w-full relative overflow-hidden min-h-[150px]" style={{ background: mockGradient }}>
           <motion.div style={{ scale: imageScale }} className="w-full h-full absolute inset-0">
             {/* If real image exists, use it here, otherwise mock content */}
             <div className="w-full h-full flex items-center justify-center">
@@ -68,7 +68,7 @@ const StickyCard = ({ i, title, org, date, tags, src, mockGradient, progress, ra
         </div>
 
         {/* Bottom: Info Area */}
-        <div className="h-[40%] flex flex-col justify-between p-6 md:p-8 bg-[#18181b]">
+        <div className="flex-none flex flex-col justify-between p-6 md:p-8 bg-[#18181b]">
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="w-2 h-2 rounded-full bg-white/50" />

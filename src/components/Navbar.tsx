@@ -121,15 +121,17 @@ export default function Navbar() {
 
           {/* Mobile Controls */}
           <div className="flex lg:hidden items-center gap-4 pointer-events-auto">
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg text-foreground hover:bg-white/10 transition-colors relative z-50"
-              aria-label={isOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isOpen}
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </motion.button>
+            <div className="liquid-glass-nav rounded-2xl p-1">
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setIsOpen(!isOpen)}
+                className="p-2 rounded-xl text-white hover:bg-white/10 transition-colors relative z-50 flex items-center justify-center"
+                aria-label={isOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isOpen}
+              >
+                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </motion.button>
+            </div>
           </div>
         </div>
 
