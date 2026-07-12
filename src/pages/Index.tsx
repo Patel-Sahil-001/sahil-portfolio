@@ -2,7 +2,7 @@ import { useState } from "react";
 import Navbar          from "@/components/Navbar";
 import HeroSection     from "@/components/HeroSection";
 import AboutSection    from "@/components/AboutSection";
-import SkillsSection   from "@/components/SkillsSection";
+import CardCascade     from "@/components/card-cascade";
 import EducationSection   from "@/components/EducationSection";
 import InterestsSection   from "@/components/InterestsSection";
 import ProjectsSection    from "@/components/ProjectsSection";
@@ -33,7 +33,7 @@ export default function Index() {
         <Navbar logoVisible={introComplete} />
         <HeroSection />
         <AboutSection />
-        <SkillsSection />
+        <CardCascade />
         <EducationSection />
         <InterestsSection />
         <CertificatesSection />

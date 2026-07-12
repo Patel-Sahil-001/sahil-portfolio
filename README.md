@@ -8,10 +8,11 @@
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
 
-**A stunning, modern portfolio showcasing cutting-edge web development**
+**A stunning, modern portfolio showcasing cutting-edge web development and 3D interactions**
 
-[🚀 Live Demo](http://patel-sahil.vercel.app/) • [📖 Documentation](#) • [🐛 Report Bug](https://github.com/Patel-Sahil-001/sahil-portfolio/issues) • [✨ Request Feature](https://github.com/Patel-Sahil-001/sahil-portfolio/issues)
+[🚀 Live Demo](http://patel-sahil.vercel.app/) • [🐛 Report Bug](https://github.com/Patel-Sahil-001/sahil-portfolio/issues) • [✨ Request Feature](https://github.com/Patel-Sahil-001/sahil-portfolio/issues)
 
 </div>
 
@@ -19,19 +20,19 @@
 
 ## 🎯 About This Project
 
-Experience a **premium, neon-themed developer portfolio** that brings projects to life with stunning animations, interactive effects, and a sleek modern design. Built with performance and user experience at its core, this portfolio demonstrates advanced React patterns and design principles.
+Experience a **premium, interactive developer portfolio** that brings projects to life with stunning 3D animations, scroll-driven effects, and a sleek modern design. Built with performance and user experience at its core, this portfolio demonstrates advanced React patterns and design principles.
 
 **About Me:**
 I am **Sahil Patel**, a Web Developer specializing in the **MERN Stack** (MongoDB, Express.js, React, Node.js). Currently pursuing a **B.Tech in Computer Science and Engineering** at Parul University, I focus on building scalable, full-stack web applications with modern technologies and best practices.
 
 ### ⚡ Key Highlights
 
-- 🎨 **Premium Animations** - Shimmer effects, pulse-glow, glass morphism, and floating animations
-- 📱 **Fully Responsive** - Seamless experience across all devices
-- 🌙 **Modern UI/UX** - Clean, intuitive interface with attention to detail
-- ⚡ **Lightning Fast** - Optimized performance with Vite
-- 🎭 **Interactive Components** - Engaging hover effects and smooth transitions
-- ♿ **Accessible** - Built with accessibility best practices
+- 🌀 **Scroll-Driven 3D Cascade** - A dynamic, semi-circular 3D card animation that elegantly showcases the technical stack as you scroll down the page.
+- 🎨 **Premium Visuals** - Immersive WebGL backgrounds, glass morphism, pulse-glows, and shimmer effects.
+- 📱 **Flawlessly Responsive** - Fully optimized, robust adaptive layouts ensuring a seamless experience across all screen sizes and mobile devices.
+- 🌙 **Modern UI/UX** - Clean, intuitive interface with attention to detail and a strong dark-mode aesthetic.
+- ⚡ **Lightning Fast** - Optimized rendering and asset delivery powered by Vite.
+- 🎭 **Interactive Components** - Engaging hover effects, animated buttons, and smooth route transitions.
 
 ---
 
@@ -59,6 +60,12 @@ This portfolio leverages cutting-edge technologies:
 - **Tech:** Python, Java, React, Database Management
 - **Key Features:** Real-time inventory tracking, Order management, Analytics dashboard.
 - [View Live](https://stockflow-erp.vercel.app) | [GitHub](https://github.com/Patel-Sahil-001/StockFlow-ERP-Project)
+
+### PromptForge Verse
+**Description:** An advanced AI prompt engineering laboratory designed to bridge the gap between simple ideas and complex AI model inputs.
+- **Tech:** React, TypeScript, Tailwind CSS, Firebase, Framer Motion
+- **Key Features:** AI Prompt Enhancer, Image Alchemy, Automated Auth System.
+- [View Live](https://promptforge-verse.vercel.app/) | [GitHub](https://github.com/Patel-Sahil-001/promptforge-verse)
 
 ---
 
@@ -101,23 +108,6 @@ Perfect for full control and your favorite IDE:
 3. Run `npm run dev` for hot-reload development
 4. Build for production with `npm run build`
 
-### Option 2: GitHub Online Editor
-
-Quick edits on the go:
-
-1. Navigate to any file in this repository
-2. Click the **Edit** button (✏️ pencil icon)
-3. Make your changes and commit directly
-
-### Option 3: GitHub Codespaces
-
-Full development environment in your browser:
-
-1. Click the **Code** button (green) on the repository
-2. Select the **Codespaces** tab
-3. Click **New codespace** to launch
-4. Code, commit, and push - all from your browser!
-
 ---
 
 ## 📦 Available Scripts
@@ -150,17 +140,6 @@ npm i -g vercel
 # Deploy
 vercel
 ```
-
----
-
-## 🎨 Customization
-
-Make it yours! Key areas to customize:
-
-- **`src/components/`** - All React components
-- **`src/assets/`** - Images, icons, and media files
-- **`index.css`** - Global styles and custom animations
-- **`public/`** - Static assets and favicon
 
 ---
 

@@ -44,7 +44,7 @@ export default function HeroSection() {
           timeScale={0.5}
           height={3.5}
           baseWidth={5.5}
-          scale={isMobile ? 1.5 : 3.6}
+          scale={isMobile ? 2.5 : 3.6}
           hueShift={0}
           colorFrequency={1}
           noise={0}

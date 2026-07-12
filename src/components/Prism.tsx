@@ -180,7 +180,7 @@ const Prism: React.FC<PrismProps> = ({
           wob = mat2(c0, c1, c2, c0);
         }
 
-        const int STEPS = ${isMobile ? 20 : 40};
+        const int STEPS = ${isMobile ? 30 : 40};
         for (int i = 0; i < STEPS; i++) {
           p = vec3(f, z);
           p.xz = p.xz * wob;
@@ -443,6 +443,8 @@ const Prism: React.FC<PrismProps> = ({
                 delete container.__prismIO;
             }
             if (gl.canvas.parentElement === container) container.removeChild(gl.canvas);
+            const ext = gl.getExtension('WEBGL_lose_context');
+            if (ext) ext.loseContext();
         };
     }, [
         height,
@@ -460,7 +462,8 @@ const Prism: React.FC<PrismProps> = ({
         hoverStrength,
         inertia,
         bloom,
-        suspendWhenOffscreen
+        suspendWhenOffscreen,
+        isMobile
     ]);
 
     return <div className="prism-container" ref={containerRef} />;
