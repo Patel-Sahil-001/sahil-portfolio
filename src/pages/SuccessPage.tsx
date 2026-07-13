@@ -62,8 +62,7 @@ export default function SuccessPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="text-3xl md:text-4xl font-bold text-center text-foreground mb-3"
-            style={{ fontFamily: 'Orbitron, sans-serif' }}
+            className="text-3xl md:text-4xl font-bold text-center text-foreground mb-3 font-space"
           >
             Message Sent!
           </motion.h1>

@@ -93,7 +93,7 @@ export default function ContactSection() {
             <div>
               {/* Header */}
               <div className="flex items-center justify-between mb-5">
-                <h3 className="text-lg sm:text-xl font-bold text-foreground" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                <h3 className="text-lg sm:text-xl font-bold text-foreground">
                   Contact Information
                 </h3>
                 <div className="p-1.5 rounded-lg bg-white/10">
@@ -167,7 +167,7 @@ export default function ContactSection() {
           >
             {/* Header */}
             <div className="flex items-center justify-between mb-5">
-              <h3 className="text-lg sm:text-xl font-bold text-foreground" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+              <h3 className="text-lg sm:text-xl font-bold text-foreground">
                 Send me a Message
               </h3>
               <div className="p-1.5 rounded-lg bg-white/10">

@@ -44,13 +44,23 @@ export default function Navbar({ logoVisible = false }: NavbarProps) {
       entries.forEach((e) => { if (e.isIntersecting) setActiveSection(e.target.id); });
     }, opts);
 
-    // Observe all nav sections + the contact section
-    [...navLinks.map(l => l.id), 'contact'].forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observerRef.current?.observe(el);
-    });
+    const observeSections = () => {
+      [...navLinks.map(l => l.id), 'contact'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observerRef.current?.observe(el);
+      });
+    };
 
-    return () => observerRef.current?.disconnect();
+    observeSections();
+
+    // Re-run observer setup when DOM mutations occur (e.g. lazy loaded sections)
+    const mutationObserver = new MutationObserver(() => observeSections());
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      observerRef.current?.disconnect();
+      mutationObserver.disconnect();
+    };
   }, []);
 
   const handleNavClick = (id: string, e: React.MouseEvent) => {
@@ -209,7 +219,7 @@ export default function Navbar({ logoVisible = false }: NavbarProps) {
                     animate={{ opacity: 1, x: 0 }}
                     onClick={(e) => handleNavClick(link.id, e)}
                     className={cn(
-                      'block w-full text-left px-4 py-3 rounded-lg transition-all duration-300 font-medium',
+                      'block w-full text-left px-4 py-3 text-lg rounded-lg transition-all duration-300 font-medium',
                       activeSection === link.id
                         ? 'bg-primary/20 text-primary border border-primary/50 glow-white'
                         : 'text-muted-foreground hover:text-foreground hover:bg-white/5',
@@ -221,7 +231,7 @@ export default function Navbar({ logoVisible = false }: NavbarProps) {
                 <div className="pt-4">
                   <AnimatedButton
                     onClick={(e) => handleNavClick('contact', e)}
-                    className="w-full text-base font-semibold"
+                    className="w-full text-lg font-semibold py-6"
                   >
                     Get in Touch
                   </AnimatedButton>

@@ -34,7 +34,7 @@ const certificates = [
   }
 ];
 
-const StickyCard = ({ i, title, org, date, tags, src, mockGradient, progress, range, targetScale }: any) => {
+const StickyCard = ({ i, title, org, date, tags, src, mockGradient, progress, range, targetScale }: { i: number, title: string, org: string, date: string, tags: string[], src: string, mockGradient: string, progress: MotionValue<number>, range: number[], targetScale: number }) => {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -63,7 +63,7 @@ const StickyCard = ({ i, title, org, date, tags, src, mockGradient, progress, ra
               </h3>
             </div>
             {/* Noise texture overlay */}
-            <div className="absolute inset-0 opacity-[0.15] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-cover" />
+            <div className="absolute inset-0 opacity-[0.15]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`, backgroundSize: 'cover' }} />
           </motion.div>
         </div>
 

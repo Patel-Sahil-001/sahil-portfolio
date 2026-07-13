@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Code2 } from 'lucide-react';
 import AnimatedButton from './ui/animated-button';
@@ -40,38 +39,20 @@ const projects = [
 export default function ProjectsSection() {
   const isMobile = useIsMobile();
 
-  const particles = useMemo(() => {
-    const count = isMobile ? 8 : 20;
-    return [...Array(count)].map(() => ({
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      duration: 3 + Math.random() * 2,
-      delay: Math.random() * 2,
-    }));
-  }, [isMobile]);
-
   return (
     <section id="projects" className="relative gradient-bg-animate text-white pb-[10vh]">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none z-0" />
 
-      {/* Animated particles */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
-        {particles.map((particle, i) => (
-          <motion.div
+      {/* Animated particles — CSS-only for performance */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none overflow-hidden">
+        {[...Array(isMobile ? 8 : 15)].map((_, i) => (
+          <div
             key={i}
             className="absolute w-1 h-1 bg-white rounded-full"
             style={{
-              left: `${particle.left}%`,
-              top: `${particle.top}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.2, 1, 0.2],
-            }}
-            transition={{
-              duration: particle.duration,
-              repeat: Infinity,
-              delay: particle.delay,
+              left: `${(i * 37 + 13) % 100}%`,
+              top: `${(i * 53 + 7) % 100}%`,
+              animation: `particleFloat ${3 + (i % 3)}s ease-in-out infinite ${(i * 0.3) % 2}s`,
             }}
           />
         ))}
@@ -93,20 +74,22 @@ export default function ProjectsSection() {
               whileHover={isMobile ? {} : { y: -10 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-card text-card-foreground rounded-[2rem] overflow-hidden flex flex-col shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300"
+              className="group bg-card text-card-foreground rounded-[2rem] overflow-hidden flex flex-col shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300"
             >
               {/* Project Image */}
               <div className="w-full h-48 sm:h-56 relative overflow-hidden p-3 pb-0">
                 <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover rounded-t-2xl rounded-b-sm"
+                  src={project.image.replace('.png', '.webp')}
+                  alt={`Screenshot of ${project.title} project`}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
 
               {/* Project Details */}
               <div className="flex flex-col flex-grow p-5 sm:p-8">
-                <h3 className="text-2xl font-bold mb-3 text-center" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                <h3 className="text-2xl font-bold mb-3 text-center">
                   {project.title}
                 </h3>
                 
@@ -167,6 +150,13 @@ export default function ProjectsSection() {
         </motion.div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes particleFloat {
+          0%, 100% { transform: translateY(0); opacity: 0.2; }
+          50% { transform: translateY(-30px); opacity: 1; }
+        }
+      `}</style>
     </section>
   );
 }

@@ -42,8 +42,10 @@ const ScrollReveal = ({
 
         const scroller = scrollContainerRef && scrollContainerRef.current ? scrollContainerRef.current : window;
 
+        const triggers: ScrollTrigger[] = [];
+
         // Optimize rotation animation with will-change and reduced scrub for performance
-        gsap.fromTo(
+        const rotTween = gsap.fromTo(
             el,
             { transformOrigin: '0% 50%', rotate: baseRotation, willChange: 'transform' },
             {
@@ -54,16 +56,17 @@ const ScrollReveal = ({
                     scroller,
                     start: 'top bottom',
                     end: rotationEnd,
-                    scrub: 0.5, // Reduced from true for smoother performance
+                    scrub: 0.5,
                     invalidateOnRefresh: true
                 }
             }
         );
+        if (rotTween.scrollTrigger) triggers.push(rotTween.scrollTrigger);
 
         const wordElements = el.querySelectorAll('.word');
 
         // Optimize opacity animation
-        gsap.fromTo(
+        const opacityTween = gsap.fromTo(
             wordElements,
             { opacity: baseOpacity, willChange: 'opacity' },
             {
@@ -75,21 +78,21 @@ const ScrollReveal = ({
                     scroller,
                     start: 'top bottom-=20%',
                     end: wordAnimationEnd,
-                    scrub: 0.5, // Reduced from true for smoother performance
+                    scrub: 0.5,
                     invalidateOnRefresh: true
                 },
                 onComplete: () => {
-                    // Remove will-change after animation completes to free up resources
                     wordElements.forEach(word => {
                         (word as HTMLElement).style.willChange = 'auto';
                     });
                 }
             }
         );
+        if (opacityTween.scrollTrigger) triggers.push(opacityTween.scrollTrigger);
 
         // Optimize blur animation - this is the most expensive operation
         if (effectiveBlur) {
-            gsap.fromTo(
+            const blurTween = gsap.fromTo(
                 wordElements,
                 { filter: `blur(${blurStrength}px)`, willChange: 'filter' },
                 {
@@ -101,22 +104,24 @@ const ScrollReveal = ({
                         scroller,
                         start: 'top bottom-=20%',
                         end: wordAnimationEnd,
-                        scrub: 0.5, // Reduced from true for smoother performance
+                        scrub: 0.5,
                         invalidateOnRefresh: true
                     }
                 }
             );
+            if (blurTween.scrollTrigger) triggers.push(blurTween.scrollTrigger);
         }
 
         return () => {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+            // Kill ScrollTriggers specific to this component instance on unmount
+            triggers.forEach(trigger => trigger.kill());
         };
-    }, [scrollContainerRef, enableBlur, baseRotation, baseOpacity, rotationEnd, wordAnimationEnd, blurStrength]);
+    }, [scrollContainerRef, enableBlur, baseRotation, baseOpacity, rotationEnd, wordAnimationEnd, blurStrength, effectiveBlur]);
 
     return (
-        <h2 ref={containerRef} className={`scroll-reveal ${containerClassName}`}>
+        <div ref={containerRef} className={`scroll-reveal ${containerClassName}`}>
             <p className={`scroll-reveal-text ${textClassName}`}>{splitText}</p>
-        </h2>
+        </div>
     );
 };
 

@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import Navbar          from "@/components/Navbar";
 import HeroSection     from "@/components/HeroSection";
-import AboutSection    from "@/components/AboutSection";
-import CardCascade     from "@/components/card-cascade";
-import EducationSection   from "@/components/EducationSection";
-import InterestsSection   from "@/components/InterestsSection";
-import ProjectsSection    from "@/components/ProjectsSection";
-import CertificatesSection from "@/components/CertificatesSection";
-import ContactSection  from "@/components/ContactSection";
-import Footer          from "@/components/Footer";
 import IntroAnimation  from "@/components/IntroAnimation";
+
+// Lazy-load below-the-fold sections for faster initial render
+const AboutSection = lazy(() => import("@/components/AboutSection"));
+const CardCascade = lazy(() => import("@/components/card-cascade"));
+const EducationSection = lazy(() => import("@/components/EducationSection"));
+const InterestsSection = lazy(() => import("@/components/InterestsSection"));
+const CertificatesSection = lazy(() => import("@/components/CertificatesSection"));
+const ProjectsSection = lazy(() => import("@/components/ProjectsSection"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
+const Footer = lazy(() => import("@/components/Footer"));
 
 export default function Index() {
   // ── true once IntroAnimation calls onComplete() ───────────────────────────
@@ -32,14 +34,16 @@ export default function Index() {
         {/* logoVisible prop fades the nav logo in as the overlay disappears */}
         <Navbar logoVisible={introComplete} />
         <HeroSection />
-        <AboutSection />
-        <CardCascade />
-        <EducationSection />
-        <InterestsSection />
-        <CertificatesSection />
-        <ProjectsSection />
-        <ContactSection />
-        <Footer />
+        <Suspense fallback={null}>
+          <AboutSection />
+          <CardCascade />
+          <EducationSection />
+          <InterestsSection />
+          <CertificatesSection />
+          <ProjectsSection />
+          <ContactSection />
+          <Footer />
+        </Suspense>
       </main>
     </>
   );

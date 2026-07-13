@@ -63,7 +63,7 @@ export default function InterestsSection() {
                     <interest.icon className="h-10 w-10 text-foreground group-hover:text-primary transition-colors" />
                   </div>
 
-                  <h3 className="text-2xl font-bold mb-3 text-foreground" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                  <h3 className="text-2xl font-bold mb-3 text-foreground">
                     {interest.title}
                   </h3>
 

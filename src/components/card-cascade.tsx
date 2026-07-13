@@ -272,24 +272,29 @@ export function CardCascade() {
 
   const total = slideCards.length;
 
-  // Scroll tracking
+  // Scroll tracking — rAF-throttled to avoid excessive re-renders
   useEffect(() => {
+    let rafId = 0;
     const onScroll = () => {
-      const el = sectionRef.current;
-      if (!el) return;
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = 0;
+        const el = sectionRef.current;
+        if (!el) return;
 
-      const rect = el.getBoundingClientRect();
-      const sectionHeight = el.offsetHeight - window.innerHeight;
-      if (sectionHeight <= 0) return;
+        const rect = el.getBoundingClientRect();
+        const sectionHeight = el.offsetHeight - window.innerHeight;
+        if (sectionHeight <= 0) return;
 
-      const raw = -rect.top / sectionHeight;
-      const clamped = Math.max(0, Math.min(1, raw));
-      setScrollProgress(clamped);
+        const raw = -rect.top / sectionHeight;
+        const clamped = Math.max(0, Math.min(1, raw));
+        setScrollProgress(clamped);
 
-      // Enter when section is visible in the viewport
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        setEntered(true);
-      }
+        // Enter when section is visible in the viewport
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          setEntered(true);
+        }
+      });
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -299,6 +304,7 @@ export function CardCascade() {
     return () => {
       window.removeEventListener("scroll", onScroll);
       clearTimeout(t);
+      if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);
 
@@ -423,7 +429,8 @@ export function CardCascade() {
               const zIdx = 100 - Math.round(dist * 10);
 
               // Entry animation
-              let entryTx = 0, entryTy = 0, entryRz = 0, entryScale = 1, entryOpacity = 1, entryBlur = 0;
+              let entryTy = 0, entryRz = 0, entryScale = 1, entryOpacity = 1, entryBlur = 0;
+              const entryTx = 0;
               if (!entered) {
                 entryTy = -800 + i * 50;
                 entryRz = -30 + i * 8;

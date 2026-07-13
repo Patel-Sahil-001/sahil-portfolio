@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-// @ts-ignore
+// @ts-expect-error - ogl types may not be fully complete
 import { Renderer, Triangle, Program, Mesh } from 'ogl';
 import { useIsMobile } from '@/hooks/use-mobile';
 import './Prism.css';
@@ -343,13 +343,13 @@ const Prism: React.FC<PrismProps> = ({
             pointer.inside = false;
         };
 
-        let onPointerMove: ((e: any) => void) | null = null;
+        let onPointerMove: ((e: MouseEvent) => void) | null = null;
         if (animationType === 'hover') {
             onPointerMove = (e) => {
                 onMove(e);
                 startRAF();
             };
-            // @ts-ignore
+            // @ts-expect-error - passive is non-standard or missing in some lib.dom versions
             window.addEventListener('pointermove', onPointerMove, { passive: true });
             window.addEventListener('mouseleave', onLeave);
             window.addEventListener('blur', onBlur);
@@ -421,7 +421,7 @@ const Prism: React.FC<PrismProps> = ({
             });
             io.observe(container);
             startRAF();
-            // @ts-ignore
+            // @ts-expect-error - custom property on HTMLElement
             container.__prismIO = io;
         } else {
             startRAF();
@@ -436,10 +436,10 @@ const Prism: React.FC<PrismProps> = ({
                 window.removeEventListener('blur', onBlur);
             }
             if (suspendWhenOffscreen) {
-                // @ts-ignore
+                // @ts-expect-error - custom property
                 const io = container.__prismIO;
                 if (io) io.disconnect();
-                // @ts-ignore
+                // @ts-expect-error - custom property
                 delete container.__prismIO;
             }
             if (gl.canvas.parentElement === container) container.removeChild(gl.canvas);

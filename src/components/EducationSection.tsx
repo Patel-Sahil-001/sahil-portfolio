@@ -104,7 +104,7 @@ export default function EducationSection() {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto"
         >
-          <h3 className="text-3xl font-bold text-center mb-8 text-foreground" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+          <h3 className="text-3xl font-bold text-center mb-8 text-foreground">
             Professional Certifications
           </h3>
 

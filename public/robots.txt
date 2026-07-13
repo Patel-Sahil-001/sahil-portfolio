@@ -12,3 +12,7 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://patelsahil.dev/sitemap.xml
+
+Sitemap: https://patelsahil.dev/sitemap.xml

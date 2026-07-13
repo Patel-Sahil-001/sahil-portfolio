@@ -11,24 +11,32 @@ export default function SectionTitle({ title, subtitle }: SectionTitleProps) {
   const progress = useMotionValue(0);
 
   useEffect(() => {
+    let rafId = 0;
     const handleScroll = () => {
-      if (!containerRef.current) return;
-      const parent = containerRef.current.parentElement; // the <section>
-      if (!parent) return;
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = 0;
+        if (!containerRef.current) return;
+        const parent = containerRef.current.parentElement; // the <section>
+        if (!parent) return;
 
-      const rect = parent.getBoundingClientRect();
-      const titleHeight = containerRef.current.offsetHeight;
+        const rect = parent.getBoundingClientRect();
+        const titleHeight = containerRef.current.offsetHeight;
 
-      // How far the section has scrolled past the top of viewport
-      // 0 = title just became visible/sticky, 1 = content fully covers title
-      const scrolled = -rect.top;
-      const ratio = Math.max(0, Math.min(1, scrolled / titleHeight));
-      progress.set(ratio);
+        // How far the section has scrolled past the top of viewport
+        // 0 = title just became visible/sticky, 1 = content fully covers title
+        const scrolled = -rect.top;
+        const ratio = Math.max(0, Math.min(1, scrolled / titleHeight));
+        progress.set(ratio);
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // initial call
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, [progress]);
 
   // Color: bright white → dull dark gray as content scrolls over
@@ -57,7 +65,7 @@ export default function SectionTitle({ title, subtitle }: SectionTitleProps) {
       className="h-[30vh] sm:h-[50vh] flex flex-col items-center justify-center sticky top-0 z-0 overflow-hidden pointer-events-none"
     >
       <motion.h2
-        className="text-3xl sm:text-6xl md:text-8xl lg:text-[10rem] font-black tracking-widest uppercase text-center px-4"
+        className="text-5xl sm:text-6xl md:text-8xl lg:text-[10rem] font-black tracking-widest uppercase text-center px-4"
         style={{
           fontFamily: 'Bebas Neue, sans-serif',
           color,

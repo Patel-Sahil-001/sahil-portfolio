@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 
 interface AnimatedButtonProps {
     children: ReactNode;
-    onClick?: (e?: any) => void;
+    onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
     className?: string;
     href?: string;
     variant?: "default" | "outline";

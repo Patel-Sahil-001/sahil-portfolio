@@ -93,7 +93,7 @@ npm install
 npm run dev
 ```
 
-🎉 **That's it!** Open your browser and navigate to `http://localhost:5173`
+🎉 **That's it!** Open your browser and navigate to `http://localhost:3000`
 
 ---
 
