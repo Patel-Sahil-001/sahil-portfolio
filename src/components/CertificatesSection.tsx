@@ -51,7 +51,7 @@ const StickyCard = ({ i, title, org, date, tags, src, mockGradient, progress, ra
           scale,
           top: `calc(-5vh + ${i * 25}px)`
         }}
-        className="relative flex flex-col w-[88vw] max-w-[600px] h-[380px] sm:h-[450px] md:h-[500px] rounded-[25px] overflow-hidden bg-[#18181b] border border-white/10 shadow-2xl origin-top"
+        className="relative flex flex-col w-[88vw] max-w-[600px] h-[380px] sm:h-[450px] md:h-[500px] rounded-[25px] overflow-hidden glass-card shadow-2xl origin-top"
       >
         {/* Top: Image/Visual Area */}
         <div className="flex-1 w-full relative overflow-hidden min-h-[150px]" style={{ background: mockGradient }}>
@@ -68,7 +68,7 @@ const StickyCard = ({ i, title, org, date, tags, src, mockGradient, progress, ra
         </div>
 
         {/* Bottom: Info Area */}
-        <div className="flex-none flex flex-col justify-between p-6 md:p-8 bg-[#18181b]">
+        <div className="flex-none flex flex-col justify-between p-6 md:p-8 bg-black/20 backdrop-blur-md">
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="w-2 h-2 rounded-full bg-white/50" />
@@ -110,7 +110,7 @@ export default function CertificatesSection() {
   });
 
   return (
-    <section id="certificates" ref={container} className="relative bg-[#0a0a0f] text-white">
+    <section id="certificates" ref={container} className="relative text-white">
       {/* Intro Heading */}
       <SectionTitle title="CERTIFICATIONS" subtitle="Scroll to explore" />
 

@@ -34,8 +34,8 @@ export default function InterestsSection() {
   const isMobile = useIsMobile();
 
   return (
-    <section id="interests" className="relative gradient-bg-animate text-white pb-[10vh]">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none z-0" />
+    <section id="interests" className="relative text-white pb-[10vh]">
+      <div className="absolute inset-0 pointer-events-none z-0" />
 
       {/* Sticky Background Title */}
       <SectionTitle title="INTERESTS" />
@@ -47,19 +47,19 @@ export default function InterestsSection() {
           {interests.map((interest, index) => (
             <motion.div
               key={interest.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 40, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={isMobile ? {} : { scale: 1.05 }}
+              transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1], delay: index * 0.1 }}
+              whileHover={isMobile ? {} : { scale: 1.02 }}
               className="relative group"
             >
-              <div className="glass-premium rounded-2xl p-4 sm:p-8 h-full glass-card-hover shimmer pulse-glow">
+              <div className="glass-premium rounded-2xl p-4 sm:p-8 h-full glass-card-hover">
                 {/* Gradient background on hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${interest.gradient} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300`} />
 
                 <div className="relative z-10">
-                  <div className="mb-6 inline-block p-4 rounded-xl bg-white/10 group-hover:glow-white transition-all duration-300">
+                  <div className="mb-6 inline-block p-4 rounded-xl bg-white/10 transition-all duration-500">
                     <interest.icon className="h-10 w-10 text-foreground group-hover:text-primary transition-colors" />
                   </div>
 
@@ -81,13 +81,13 @@ export default function InterestsSection() {
 
         {/* Additional info */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
+          transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1], delay: 0.4 }}
           className="mt-16 text-center"
         >
-          <div className="glass-premium rounded-2xl p-4 sm:p-8 max-w-3xl mx-auto shimmer pulse-glow">
+          <div className="glass-premium rounded-2xl p-4 sm:p-8 max-w-3xl mx-auto">
             <p className="text-lg text-muted-foreground leading-relaxed">
               I'm constantly exploring the intersection of <span className="text-foreground font-semibold">technology and design</span>,
               seeking to create solutions that are not only functionally robust but also

@@ -69,8 +69,8 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative gradient-bg-animate text-white pb-[10vh]">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none z-0" />
+    <section id="contact" className="relative text-white pb-[10vh]">
+      <div className="absolute inset-0 pointer-events-none z-0" />
 
       {/* Sticky Background Title */}
       <SectionTitle title="GET IN TOUCH" />
@@ -84,10 +84,10 @@ export default function ContactSection() {
 
           {/* Left - Contact Information */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
             className="glass-premium rounded-2xl p-4 sm:p-6 flex flex-col justify-between border border-white/10"
           >
             <div>
@@ -159,10 +159,10 @@ export default function ContactSection() {
 
           {/* Right - Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1], delay: 0.1 }}
             className="glass-premium rounded-2xl p-4 sm:p-6 border border-white/10"
           >
             {/* Header */}
@@ -256,8 +256,8 @@ export default function ContactSection() {
               <motion.button
                 type="submit"
                 disabled={loading || submitted}
-                whileHover={!loading && !submitted ? { scale: 1.02 } : {}}
-                whileTap={!loading && !submitted ? { scale: 0.98 } : {}}
+                whileHover={!loading && !submitted ? { scale: 1.01 } : {}}
+                whileTap={!loading && !submitted ? { scale: 0.99 } : {}}
                 className={`w-full py-3 sm:py-2.5 text-sm font-bold rounded-lg flex items-center justify-center gap-2 transition-colors disabled:cursor-not-allowed ${
                   submitted
                     ? 'bg-emerald-500 text-white'

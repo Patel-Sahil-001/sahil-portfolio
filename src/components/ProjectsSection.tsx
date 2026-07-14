@@ -40,23 +40,8 @@ export default function ProjectsSection() {
   const isMobile = useIsMobile();
 
   return (
-    <section id="projects" className="relative gradient-bg-animate text-white pb-[10vh]">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none z-0" />
-
-      {/* Animated particles — CSS-only for performance */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none overflow-hidden">
-        {[...Array(isMobile ? 8 : 15)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-white rounded-full"
-            style={{
-              left: `${(i * 37 + 13) % 100}%`,
-              top: `${(i * 53 + 7) % 100}%`,
-              animation: `particleFloat ${3 + (i % 3)}s ease-in-out infinite ${(i * 0.3) % 2}s`,
-            }}
-          />
-        ))}
-      </div>
+    <section id="projects" className="relative text-white pb-[10vh]">
+      <div className="absolute inset-0 pointer-events-none z-0" />
 
       {/* Sticky Background Title */}
       <SectionTitle title="PROJECTS" />
@@ -69,12 +54,12 @@ export default function ProjectsSection() {
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={isMobile ? {} : { y: -10 }}
+              initial={{ opacity: 0, y: 40, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              whileHover={isMobile ? {} : { scale: 1.01, y: -5 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="group bg-card text-card-foreground rounded-[2rem] overflow-hidden flex flex-col shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300"
+              transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1], delay: index * 0.15 }}
+              className="group bg-card text-card-foreground rounded-[2rem] overflow-hidden flex flex-col shadow-lg border border-border/10 hover:shadow-xl transition-all duration-500"
             >
               {/* Project Image */}
               <div className="w-full h-48 sm:h-56 relative overflow-hidden p-3 pb-0">
@@ -83,7 +68,8 @@ export default function ProjectsSection() {
                   alt={`Screenshot of ${project.title} project`}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform group-hover:scale-[1.03]"
+                  style={{ transitionDuration: '1200ms', transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)' }}
                 />
               </div>
 
@@ -135,15 +121,14 @@ export default function ProjectsSection() {
           ))}
         </div>
 
-        {/* Coming Soon Note */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1], delay: 0.3 }}
           className="text-center mt-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-3 rounded-lg glass-premium pulse-glow shimmer border border-white/30">
+          <div className="inline-flex items-center gap-2 px-4 py-3 rounded-lg glass-premium border border-white/10">
             <Code2 className="h-5 w-5 text-primary" />
             <p className="text-foreground font-medium">More projects coming soon...</p>
           </div>
@@ -151,12 +136,6 @@ export default function ProjectsSection() {
         </div>
       </div>
 
-      <style>{`
-        @keyframes particleFloat {
-          0%, 100% { transform: translateY(0); opacity: 0.2; }
-          50% { transform: translateY(-30px); opacity: 1; }
-        }
-      `}</style>
     </section>
   );
 }

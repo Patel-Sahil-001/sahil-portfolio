@@ -75,8 +75,8 @@ export default function AboutSection() {
   };
 
   return (
-    <section id="about" className="relative gradient-bg-animate text-white pb-[10vh]">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none z-0" />
+    <section id="about" className="relative text-white pb-[10vh]">
+      <div className="absolute inset-0 pointer-events-none z-0" />
 
       {/* Sticky Background Title */}
       <SectionTitle title="ABOUT ME" />
@@ -87,14 +87,14 @@ export default function AboutSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start max-w-6xl mx-auto">
           {/* Left Side - About Text and Resume Buttons */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
             className="space-y-4 order-2 md:order-1"
           >
             {/* Who I Am Card */}
-            <div className="glass-premium rounded-xl p-3 sm:p-4 glass-card-hover shimmer pulse-glow group">
+            <div className="glass-premium rounded-xl p-3 sm:p-4 glass-card-hover group">
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
                   <svg className="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,7 +118,7 @@ export default function AboutSection() {
             </div>
 
             {/* Education Card */}
-            <div className="glass-premium rounded-xl p-3 sm:p-4 glass-card-hover shimmer pulse-glow group">
+            <div className="glass-premium rounded-xl p-3 sm:p-4 glass-card-hover group">
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
                   <svg className="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -144,7 +144,7 @@ export default function AboutSection() {
             </div>
 
             {/* Career Objective Card */}
-            <div className="glass-premium rounded-xl p-3 sm:p-4 glass-card-hover shimmer pulse-glow group">
+            <div className="glass-premium rounded-xl p-3 sm:p-4 glass-card-hover group">
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
                   <svg className="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -187,20 +187,20 @@ export default function AboutSection() {
 
           {/* Right Side - Profile Photo and Social Links */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1], delay: 0.1 }}
             className="flex flex-col items-center space-y-6 order-1 md:order-2"
           >
             {/* Profile Photo */}
             <motion.div
-              whileHover={{ scale: 1.05, rotate: 1 }}
-              transition={{ duration: 0.3 }}
-              className="relative group float-animation"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+              className="relative group"
             >
-              <div className="absolute -inset-4 rounded-[3rem] opacity-50 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15)_0%,transparent_70%)] group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative glass-premium rounded-3xl p-3 overflow-hidden border-2 border-white/30 group-hover:border-white/50 transition-all duration-500 shimmer">
+              <div className="absolute -inset-4 rounded-[3rem] opacity-50 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,transparent_70%)] group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="relative glass-premium rounded-3xl p-3 overflow-hidden border border-white/10 group-hover:border-white/20 transition-all duration-700">
                 <img
                   src="/profile-photo.webp"
                   alt="Patel Sahil — Full-Stack Web Developer"
