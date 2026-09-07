@@ -31,6 +31,15 @@ const certificates = [
     tags: ['Strategy', 'Automation', 'BI'],
     src: '/certificates/ai-business-professionals.pdf',
     mockGradient: 'linear-gradient(135deg, #064e3b 0%, #10b981 100%)'
+  },
+  {
+    title: 'Web Development',
+    org: 'Udemy',
+    date: 'Sep 2026',
+    color: '#f59e0b',
+    tags: ['MERN', 'Full-Stack', 'Modern Web'],
+    src: '/certificates/web development.pdf',
+    mockGradient: 'linear-gradient(135deg, #78350f 0%, #f59e0b 100%)'
   }
 ];
 

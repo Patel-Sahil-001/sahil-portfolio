@@ -29,21 +29,6 @@ const educationData = [
   }
 ];
 
-const certifications = [
-  {
-    title: "Windows UX Design",
-    issuer: "Microsoft",
-    year: "2024",
-    icon: "🎨"
-  },
-  {
-    title: "Prompt Engineering",
-    issuer: "Online Certification",
-    year: "2024",
-    icon: "🤖"
-  }
-];
-
 export default function EducationSection() {
   return (
     <section id="education" className="relative text-white pb-[10vh]">
@@ -56,7 +41,7 @@ export default function EducationSection() {
       <div className="relative z-10 container mx-auto px-4 mt-[-10vh]">
         <div className="bg-background/90 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl">
           {/* Education Timeline */}
-          <div className="max-w-4xl mx-auto mb-16">
+          <div className="max-w-4xl mx-auto">
           <div className="relative">
             {/* Vertical line */}
             <div className="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-white/20" />
@@ -96,40 +81,9 @@ export default function EducationSection() {
             ))}
           </div>
         </div>
-
-        {/* Certifications */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
-          className="max-w-4xl mx-auto"
-        >
-          <h3 className="text-3xl font-bold text-center mb-8 text-foreground">
-            Professional Certifications
-          </h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {certifications.map((cert, index) => (
-              <motion.div
-                key={cert.title}
-                initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1], delay: index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-                className="glass-premium rounded-xl p-4 sm:p-6 glass-card-hover cursor-pointer"
-              >
-                <div className="text-4xl mb-3 grayscale">{cert.icon}</div>
-                <h4 className="text-xl font-bold text-foreground mb-2">{cert.title}</h4>
-                <p className="text-muted-foreground font-semibold mb-1">{cert.issuer}</p>
-                <p className="text-sm text-muted-foreground/70">{cert.year}</p>
-              </motion.div>
-            ))}
-          </div>
-          </motion.div>
         </div>
       </div>
     </section>
   );
 }
+
