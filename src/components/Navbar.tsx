@@ -24,6 +24,8 @@ export default function Navbar({ logoVisible = false }: NavbarProps) {
   const [activeSection,  setActiveSection]  = useState('hero');
   const [scrolled,       setScrolled]       = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
+  const isClickScrollingRef = useRef(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // ── scroll effect ──────────────────────────────────────────────────────────
   useEffect(() => {
@@ -41,6 +43,7 @@ export default function Navbar({ logoVisible = false }: NavbarProps) {
     };
 
     observerRef.current = new IntersectionObserver((entries) => {
+      if (isClickScrollingRef.current) return;
       entries.forEach((e) => { if (e.isIntersecting) setActiveSection(e.target.id); });
     }, opts);
 
@@ -57,9 +60,21 @@ export default function Navbar({ logoVisible = false }: NavbarProps) {
     const mutationObserver = new MutationObserver(() => observeSections());
     mutationObserver.observe(document.body, { childList: true, subtree: true });
 
+    const checkBottom = () => {
+      // If user is scrolled near the bottom of the page, activate contact
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 150) {
+        if (!isClickScrollingRef.current) {
+          setActiveSection('contact');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', checkBottom, { passive: true });
+
     return () => {
       observerRef.current?.disconnect();
       mutationObserver.disconnect();
+      window.removeEventListener('scroll', checkBottom);
     };
   }, []);
 
@@ -67,21 +82,27 @@ export default function Navbar({ logoVisible = false }: NavbarProps) {
     e.preventDefault();
     setActiveSection(id);
     setIsOpen(false);
-    setTimeout(() => {
-      const el = document.getElementById(id);
-      if (el) {
-        const y = el.getBoundingClientRect().top + window.pageYOffset - 80;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-    }, 100);
+    isClickScrollingRef.current = true;
+    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+
+    const el = document.getElementById(id);
+    if (el) {
+      const y = el.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+
+    // Release the lock once smooth scroll completes
+    scrollTimeoutRef.current = setTimeout(() => {
+      isClickScrollingRef.current = false;
+    }, 800);
   };
 
   return (
     <nav
       className={cn(
-        'fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent',
+        'fixed top-0 w-full z-50 transition-all duration-300',
         scrolled
-          ? 'bg-background/80 backdrop-blur-md border-white/10 shadow-lg'
+          ? 'bg-black/50 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(255,255,255,0.03)]'
           : 'bg-transparent',
       )}
     >
@@ -101,7 +122,7 @@ export default function Navbar({ logoVisible = false }: NavbarProps) {
               src="/logo.png"
               alt="Sahil Patel"
               draggable={false}
-              className="w-8 h-8 select-none pointer-events-none"
+              className="w-8 h-8 select-none pointer-events-none drop-shadow-[0_0_12px_rgba(255,255,255,0.35)]"
               style={{ objectFit: 'contain', mixBlendMode: 'screen' }}
             />
 
@@ -150,24 +171,29 @@ export default function Navbar({ logoVisible = false }: NavbarProps) {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="hidden lg:flex items-center gap-1"
           >
-            <div className="flex items-center p-1 rounded-full bg-background/20 backdrop-blur-sm border border-white/5">
+            <div className="flex items-center gap-1 p-1 rounded-full bg-white/[0.03] backdrop-blur-3xl">
               {navLinks.map((link) => (
                 <a
                   key={link.id}
                   href={link.href}
                   onClick={(e) => handleNavClick(link.id, e)}
                   className={cn(
-                    'relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300',
+                    'relative px-4 py-2 rounded-full text-sm tracking-wide transition-colors duration-200 select-none',
                     activeSection === link.id
-                      ? 'text-primary-foreground'
-                      : 'text-muted-foreground hover:text-foreground',
+                      ? 'text-white font-bold'
+                      : 'text-zinc-400 font-medium hover:text-white',
                   )}
                 >
                   {activeSection === link.id && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute inset-0 bg-primary rounded-full glow-white"
-                      transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                      className="absolute inset-0 rounded-full bg-gradient-to-b from-white/[0.22] to-white/[0.08] backdrop-blur-3xl shadow-[0_4px_24px_rgba(255,255,255,0.08),inset_0_1px_1px_rgba(255,255,255,0.35)]"
+                      transition={{
+                        type: 'spring',
+                        stiffness: 420,
+                        damping: 17,
+                        mass: 0.7,
+                      }}
                     />
                   )}
                   <span className="relative z-10">{link.label}</span>
@@ -176,14 +202,21 @@ export default function Navbar({ logoVisible = false }: NavbarProps) {
             </div>
           </motion.div>
 
-          {/* ── Desktop CTA ───────────────────────────────────────────────── */}
+          {/* ── Desktop CTA (Glass pill with pure white glow) ─────────────── */}
           <div className="hidden lg:flex items-center gap-4">
-            <AnimatedButton
+            <button
               onClick={(e) => handleNavClick('contact', e)}
-              className="text-sm font-semibold"
+              className={cn(
+                "relative group px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-white overflow-hidden transition-all duration-300 backdrop-blur-xl hover:scale-[1.02] active:scale-[0.98]",
+                activeSection === 'contact'
+                  ? "bg-white text-black font-bold shadow-[0_0_28px_rgba(255,255,255,0.7),0_0_12px_rgba(255,255,255,0.9)]"
+                  : "bg-white/[0.06] hover:bg-white/[0.12] hover:shadow-[0_0_15px_rgba(255,255,255,0.15)]"
+              )}
             >
-              Get in Touch
-            </AnimatedButton>
+              <span className="relative z-10">
+                Get in Touch
+              </span>
+            </button>
           </div>
 
           {/* ── Mobile hamburger ──────────────────────────────────────────── */}
@@ -191,50 +224,50 @@ export default function Navbar({ logoVisible = false }: NavbarProps) {
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg text-foreground hover:bg-white/10 transition-colors relative z-50"
+              className="p-2.5 rounded-2xl bg-white/[0.05] text-foreground hover:bg-white/[0.1] backdrop-blur-xl shadow-[0_4px_16px_rgba(0,0,0,0.2)] transition-all relative z-50"
               aria-label={isOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isOpen}
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? <X className="h-5 w-5 text-white" /> : <Menu className="h-5 w-5" />}
             </motion.button>
           </div>
         </div>
 
-        {/* ── Mobile drawer ───────────────────────────────────────────────── */}
+        {/* ── Mobile drawer (Frosted glass sheet with subtle white glow) ───── */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="lg:hidden overflow-hidden bg-background/95 backdrop-blur-xl border-t border-white/10"
+              initial={{ opacity: 0, y: -8, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.98 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:hidden mt-2 mb-4 overflow-hidden rounded-3xl bg-black/80 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
             >
-              <div className="px-4 py-6 space-y-2">
+              <div className="px-4 py-5 space-y-1.5">
                 {navLinks.map((link) => (
                   <motion.a
                     key={link.id}
                     href={link.href}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
                     onClick={(e) => handleNavClick(link.id, e)}
                     className={cn(
-                      'block w-full text-left px-4 py-3 text-lg rounded-lg transition-all duration-300 font-medium',
+                      'block w-full text-left px-4 py-2.5 text-sm rounded-2xl transition-all duration-300 font-medium select-none',
                       activeSection === link.id
-                        ? 'bg-primary/20 text-primary border border-primary/50 glow-white'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-white/5',
+                        ? 'bg-white/[0.14] text-white font-bold'
+                        : 'text-zinc-300 hover:text-white hover:bg-white/[0.05]',
                     )}
                   >
                     {link.label}
                   </motion.a>
                 ))}
-                <div className="pt-4">
-                  <AnimatedButton
+                <div className="pt-3">
+                  <button
                     onClick={(e) => handleNavClick('contact', e)}
-                    className="w-full text-lg font-semibold py-6"
+                    className="w-full py-3 rounded-2xl text-sm font-semibold tracking-wide text-white bg-white/[0.1] hover:bg-white/[0.15] backdrop-blur-xl hover:scale-[1.01] active:scale-[0.99] transition-all"
                   >
                     Get in Touch
-                  </AnimatedButton>
+                  </button>
                 </div>
               </div>
             </motion.div>

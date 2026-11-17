@@ -247,7 +247,7 @@ function IconRail({ skills, isActive, isMobile }: { skills: Skill[]; isActive: b
           {doubled.map((skill, i) => (
             <div
               key={`${skill.name}-${i}`}
-              className={`grid shrink-0 place-items-center rounded-[1.2rem] border border-white/10 bg-white/[0.04] backdrop-blur-sm ${isMobile ? "h-[3.25rem] w-[3.25rem]" : "h-20 w-20"}`}
+              className={`grid shrink-0 place-items-center rounded-[1.2rem] border border-white/10 bg-white/[0.04] ${isMobile ? "h-[3.25rem] w-[3.25rem]" : "h-20 w-20"}`}
               style={{ color: skill.color }}
               title={skill.name}
             >
@@ -336,7 +336,7 @@ export function CardCascade() {
       id="skills"
       ref={sectionRef}
       className="relative w-full bg-black"
-      style={{ height: `${(total + 1) * 100}vh` }}
+      style={{ height: `${total * 65}vh` }}
     >
       {/* ===== Sticky viewport ===== */}
       <div className="sticky top-0 left-0 w-full h-screen overflow-hidden">
@@ -425,18 +425,16 @@ export function CardCascade() {
               const dist = Math.abs(offset);
               const scale = Math.max(0.7, 1 - dist * 0.08);
               const opacity = Math.max(0, 1 - dist * 0.4);
-              const blur = Math.min(6, dist * 2);
               const zIdx = 100 - Math.round(dist * 10);
 
               // Entry animation
-              let entryTy = 0, entryRz = 0, entryScale = 1, entryOpacity = 1, entryBlur = 0;
+              let entryTy = 0, entryRz = 0, entryScale = 1, entryOpacity = 1;
               const entryTx = 0;
               if (!entered) {
                 entryTy = -800 + i * 50;
                 entryRz = -30 + i * 8;
                 entryScale = 0.8;
                 entryOpacity = 0;
-                entryBlur = 10;
               }
 
               const finalX = entered ? xPos : entryTx;
@@ -444,7 +442,6 @@ export function CardCascade() {
               const finalRz = entered ? rotZ : entryRz;
               const finalScale = entered ? scale : entryScale;
               const finalOpacity = entered ? opacity : entryOpacity;
-              const finalBlur = entered ? blur : entryBlur;
 
               return (
                 <div
@@ -455,11 +452,10 @@ export function CardCascade() {
                     transformStyle: "preserve-3d",
                     transform: `translate3d(${finalX}px, ${finalY}px, 0px) rotateZ(${finalRz}deg) scale(${finalScale})`,
                     opacity: Math.max(0, finalOpacity),
-                    filter: `blur(${finalBlur}px)`,
                     transition: entered
-                      ? "transform 0.15s ease-out, opacity 0.15s ease-out, filter 0.15s ease-out"
-                      : `transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.15}s, opacity 0.6s ease-out ${i * 0.15}s, filter 0.8s ease-out ${i * 0.15}s`,
-                    willChange: "transform, opacity, filter",
+                      ? "none"
+                      : `transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.15}s, opacity 0.6s ease-out ${i * 0.15}s`,
+                    willChange: "transform, opacity",
                   }}
                 >
                   <div
