@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Code2, Database, SlidersHorizontal, ArrowUpRight } from 'lucide-react';
 import AnimatedButton from './ui/animated-button';
@@ -45,6 +45,34 @@ const projects = [
 export default function ProjectsSection() {
   const isMobile = useIsMobile();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleCardEnter = (index: number) => {
+    if (isMobile) return;
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+    setHoveredIndex(index);
+  };
+
+  const handleCardLeave = () => {
+    if (isMobile) return;
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    hoverTimeoutRef.current = setTimeout(() => {
+      setHoveredIndex(null);
+    }, 100);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <section id="projects" className="relative text-white pb-[10vh]">
@@ -63,9 +91,9 @@ export default function ProjectsSection() {
               return (
                 <div
                   key={project.title}
-                  className={`relative ${isHovered ? 'z-50' : 'z-10'}`}
-                  onMouseEnter={() => !isMobile && setHoveredIndex(index)}
-                  onMouseLeave={() => !isMobile && setHoveredIndex(null)}
+                  className={`relative ${isHovered ? 'z-40' : 'z-10'}`}
+                  onMouseEnter={() => handleCardEnter(index)}
+                  onMouseLeave={handleCardLeave}
                 >
                   {/* MOBILE VIEW: Clean, readable static card for touch screens */}
                   {isMobile ? (
@@ -148,12 +176,16 @@ export default function ProjectsSection() {
                         initial={{ opacity: 0, y: 24 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
                         animate={{
-                          scale: isHovered ? 0.985 : 1,
-                          opacity: isHovered ? 0.45 : 1
+                          scale: isHovered ? 0.98 : 1,
+                          opacity: isHovered ? 0.4 : 1
                         }}
-                        transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 350,
+                          damping: 22,
+                          y: { duration: 0.5, delay: index * 0.1 }
+                        }}
                         className="bg-card/80 backdrop-blur-md text-card-foreground rounded-2xl overflow-hidden flex flex-col border border-white/10 shadow-lg cursor-pointer hover:border-white/20 transition-colors duration-200"
                       >
                         {/* Resting Hero Graphic / Thumbnail */}
@@ -192,37 +224,39 @@ export default function ProjectsSection() {
                         </div>
                       </motion.div>
 
-                      {/* EXPANDED HOVER POPOVER CARD: Butter-smooth cubic-bezier expansion */}
+                      {/* EXPANDED HOVER POPOVER CARD: Responsive bouncy spring expansion */}
                       <AnimatePresence>
                         {isHovered && (
                           <motion.div
-                            initial={{ opacity: 0, scale: 0.98, y: 8 }}
+                            initial={{ opacity: 0, scale: 0.94, y: 10 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{
                               opacity: 0,
-                              scale: 0.985,
-                              y: 4,
-                              transition: { duration: 0.16, ease: [0.22, 1, 0.36, 1] }
+                              scale: 0.96,
+                              y: 6,
+                              transition: { duration: 0.14, ease: [0.32, 0, 0.67, 0] }
                             }}
                             transition={{
-                              duration: 0.24,
-                              ease: [0.22, 1, 0.36, 1]
+                              type: "spring",
+                              stiffness: 340,
+                              damping: 18,
+                              mass: 0.75
                             }}
                             style={{
-                              transformOrigin: index % 2 === 0 ? 'top left' : 'top right'
+                              transformOrigin: "center top"
                             }}
-                            className={`absolute z-50 -top-3 ${
-                              index % 2 === 0
-                                ? 'left-0 sm:-left-3 w-full sm:w-[calc(100%+2.5rem)]'
-                                : 'right-0 sm:-right-3 w-full sm:w-[calc(100%+2.5rem)]'
-                            } bg-[#14161a] border border-white/[0.14] rounded-2xl p-5 shadow-[0_24px_50px_rgba(0,0,0,0.85)] flex flex-col`}
+                            className="absolute z-50 -top-3 -left-2 sm:-left-3 w-[calc(100%+1rem)] sm:w-[calc(100%+1.5rem)] bg-[#14161a] border border-white/[0.14] rounded-2xl p-5 shadow-[0_24px_50px_rgba(0,0,0,0.85)] flex flex-col"
                           >
                             {/* 1. Header: Clean quiet icon tile + unslopped title & label + quick preview link */}
                             <div className="flex items-center justify-between gap-3 mb-3">
                               <div className="flex items-center gap-3 min-w-0">
-                                <div className="w-10 h-10 rounded-xl bg-white/[0.06] border border-white/[0.1] flex items-center justify-center text-neutral-200 flex-shrink-0 shadow-sm">
+                                <motion.div
+                                  whileHover={{ scale: 1.08 }}
+                                  transition={{ type: "spring", stiffness: 400, damping: 18 }}
+                                  className="w-10 h-10 rounded-xl bg-white/[0.06] border border-white/[0.1] flex items-center justify-center text-neutral-200 flex-shrink-0 shadow-sm cursor-pointer"
+                                >
                                   <project.icon className="w-5 h-5" />
-                                </div>
+                                </motion.div>
                                 <div className="min-w-0">
                                   <h3 className="text-base font-semibold text-neutral-100 truncate leading-tight">
                                     {project.title}
@@ -233,14 +267,17 @@ export default function ProjectsSection() {
                                 </div>
                               </div>
 
-                              <a
+                              <motion.a
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                transition={{ type: "spring", stiffness: 400, damping: 18 }}
                                 href={project.liveLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium bg-white/[0.06] hover:bg-white/[0.12] text-neutral-200 hover:text-white border border-white/[0.1] transition-colors flex items-center gap-1.5 shadow-sm active:scale-[0.98]"
                               >
                                 View live <ExternalLink className="w-3 h-3" />
-                              </a>
+                              </motion.a>
                             </div>
 
                             {/* 2. Description (Concrete facts, plain words) */}
