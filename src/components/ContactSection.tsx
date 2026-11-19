@@ -110,8 +110,8 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold mb-0.5">Email Address</p>
-                    <a href="mailto:99sahil9426@gmail.com" className="text-sm text-foreground font-semibold hover:text-white/80 transition-colors">
-                      99sahil9426@gmail.com
+                    <a href="mailto:sahilpatel9110@gmail.com" className="text-sm text-foreground font-semibold hover:text-white/80 transition-colors">
+                      sahilpatel9110@gmail.com
                     </a>
                     <p className="text-xs text-muted-foreground/70 mt-0.5">Respond within 24 hours</p>
                   </div>

@@ -205,10 +205,10 @@ Also supported: [Netlify](https://netlify.com) · [GitHub Pages](https://pages.g
 
 | Platform | Link |
 |----------|------|
-| 📧 **Email** | [99sahil9426@gmail.com](mailto:99sahil9426@gmail.com) |
+| 📧 **Email** | [sahilpatel9110@gmail.com](mailto:sahilpatel9110@gmail.com) |
 | 💼 **LinkedIn** | [patel-sahil9124](https://www.linkedin.com/in/patel-sahil9124/) |
 | 💻 **GitHub** | [Patel-Sahil-001](https://github.com/Patel-Sahil-001) |
-| 📸 **Instagram** | [_.sahilll12](https://www.instagram.com/_.sahilll12/) |
+| 📸 **Instagram** | [im.sahilll_10](https://www.instagram.com/im.sahilll_10/) |
 | 🌐 **Portfolio** | [patelsahil.dev](https://patelsahil.dev/) |
 
 ---

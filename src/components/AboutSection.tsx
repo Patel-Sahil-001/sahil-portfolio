@@ -22,7 +22,7 @@ const socialLinks = [
   },
   {
     icon: Instagram,
-    url: 'https://www.instagram.com/_.sahilll12/',
+    url: 'https://www.instagram.com/im.sahilll_10/',
     label: 'Instagram',
     color: 'hover:text-[#E4405F]'
   }
