@@ -44,7 +44,7 @@ export default function HeroSection() {
 
   // Setup slow cinematic camera drift
   useEffect(() => {
-    let animation: any;
+    let animation: ReturnType<typeof animateCamera> | undefined;
     if (cameraScope.current && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
       animation = animateCamera(cameraScope.current, 
         { scale: [1, 1.04], x: ['0%', '-0.3%'], y: ['0%', '-0.2%'] }, 

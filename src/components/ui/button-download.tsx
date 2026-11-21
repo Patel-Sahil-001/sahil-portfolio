@@ -32,7 +32,7 @@ export default function DownloadButton({ downloadStatus, progress, onClick, clas
             {downloadStatus === "idle" && (
                 <div className="relative z-10 flex items-center justify-center gap-2 transition-colors duration-300 group-hover:text-black">
                     <Download className="h-4 w-4" />
-                    <span>Download</span>
+                    <span>Download Resume</span>
                 </div>
             )}
             {downloadStatus === "downloading" && (
@@ -50,7 +50,7 @@ export default function DownloadButton({ downloadStatus, progress, onClick, clas
             {downloadStatus === "complete" && (
                 <div className="relative z-10 flex items-center justify-center gap-2 transition-colors duration-300 group-hover:text-black">
                     <Download className="h-4 w-4" />
-                    <span>Download</span>
+                    <span>Download Resume</span>
                 </div>
             )}
             {downloadStatus === "downloading" && (

@@ -161,17 +161,17 @@ export default function AboutSection() {
                     containerClassName="!m-0"
                     textClassName="!text-xs sm:!text-sm !leading-relaxed !font-normal text-muted-foreground"
                   >
-                    To build a career as a MERN Stack developer, continuously enhance my expertise in full-stack web development, and contribute to impactful, scalable web applications.
+                    I aim to build a career as a MERN Stack developer, continuously enhancing my expertise in full-stack development to create impactful, scalable applications.
                   </ScrollReveal>
                 </div>
               </div>
             </div>
 
             {/* Resume Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+            <div className="flex flex-wrap items-center justify-start gap-3 pt-2">
               <AnimatedButton
                 onClick={handleViewResume}
-                className="flex-1 font-semibold py-2 text-sm shadow-lg hover:shadow-xl transition-all duration-300"
+                className="w-auto px-5 py-2.5 font-semibold text-sm shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <Eye className="mr-2 h-4 w-4 inline" />
                 View Resume
@@ -180,7 +180,7 @@ export default function AboutSection() {
                 downloadStatus={downloadStatus}
                 progress={progress}
                 onClick={handleDownloadResume}
-                className="flex-1 border-white/50 text-foreground hover:bg-white/10 font-semibold py-2 text-sm shadow-lg hover:shadow-xl transition-all duration-300"
+                className="w-auto px-5 py-2.5 border-white/50 text-foreground hover:bg-white/10 font-semibold text-sm shadow-lg hover:shadow-xl transition-all duration-300"
               />
             </div>
           </motion.div>
